@@ -15,6 +15,8 @@ import cart from '../assets/cartimg.png';
 
 const Searchbar = () => {
 
+    /* Dropdown logic start */
+
     let [categoryShow , setCategoryShow] = useState(false);    /* Initiating variables in react to hide and show the category dropdown */
     let [useShow , setUseShow] = useState(false);              /* Initiating variables in react to hide and show the User dropdown */
     let [cartShow , setCartShow] = useState(false);              /* Initiating variables in react to hide and show the Cart dropdown */
@@ -30,29 +32,44 @@ const Searchbar = () => {
             }else{
                 setCategoryShow(categoryShow)
             }   
-            
+        })
+    },[categoryShow])                         /*useEffect occurs only once,so giving the variable inside makes it a loop  */
+
+
+    useEffect(()=>{
+        document.addEventListener("click",(e)=>{
+
             if (userRef.current.contains(e.target)) {         /* For User btn */
                 setUseShow (!useShow)
             } else {
-                setUseShow(useShow)
+                setUseShow (false)
             }
+        })
+    },[useShow] )
 
+    useEffect(()=>{
+        document.addEventListener("click",(e)=>{
+            
             if (cartRef.current.contains(e.target)) {         /* For Cart btn */
                 setCartShow (!cartShow)
             } else  {
                 setCartShow (setCartShow)
             }
+        })
+    },[cartShow] )
 
+    useEffect(()=>{
+        document.addEventListener("click",(e)=>{
+            
             if (cartCrossRef.current.contains(e.target)) {     /* For cross btn */
                 setCartShow (!cartShow)
             } else  {
                 setCartShow (setCartShow)
             }
-        })
-    },[categoryShow , useShow , cartShow])                         /*useEffect occurs only once,so giving the variable inside makes it a loop  */
+        })    
+    },[cartShow] )
 
-
-
+      /* Dropdown logic end */
 
 
   return (
@@ -68,7 +85,7 @@ const Searchbar = () => {
                     </div>
                     {categoryShow &&            /* Using ternary operator */
 
-                    <div className="absolute top-[61px] left-0 w-[60%] ">
+                    <div className="absolute top-[61px] left-0 w-[60%] z-10 ">
                         <ul className="bg-[#262626] py-4">
                             <li className="font-dm text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Accesories</li>
                             <li className="font-dm text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Furniture</li>
@@ -98,7 +115,7 @@ const Searchbar = () => {
                         </div>
                         {useShow &&             /* Using ternary operator */
 
-                        <div className="absolute top-[61px] left-[30%] w-[60%]  ">
+                        <div className="absolute top-[61px] left-[30%] w-[60%] z-10 ">
                             <ul className="bg-[#FFFFFF]  border-[1px] border-gray-300">
                                 <li className="font-dm text-[16px] font-normal text-center text-[#262626]  py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">My Account</li>
                                 <li className="font-dm text-[16px] font-normal text-center text-[#262626]  py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">Log Out</li>
@@ -109,7 +126,7 @@ const Searchbar = () => {
                             <FaCartShopping />
                         </div>
                         { cartShow &&
-                        <div className="absolute top-[61px] left-[24%] w-[75%]  ">
+                        <div className="absolute top-[61px] left-[24%] w-[75%] z-10 ">
                             <ul className="bg-[#FFFFFF]  border-[1px] border-gray-300 py-[20px]">
                                 <li className="flex justify-around items-center pb-5 ">
                                     <img src={cart} alt="cart" />
