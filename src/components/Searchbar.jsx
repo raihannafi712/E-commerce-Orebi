@@ -79,19 +79,19 @@ const Searchbar = () => {
                 <div className="w-[30%] relative">
                     <div  className="flex gap-x-2 items-center" ref={cateRef}  >
                         <HiMiniBars3BottomLeft />
-                        <h3 className="font-dm text-[16px] text-[#262626] cursor-pointer"  >
+                        <h3 className="font-dm text-[12px] lg:text-[16px] text-[#262626] cursor-pointer"  >
                             Shop by Category
                         </h3>
                     </div>
                     {categoryShow &&            /* Using ternary operator */
 
-                    <div className="absolute top-[61px] left-0 w-[60%] z-10 ">
+                    <div className="absolute top-[61px] left-0 w-[119%] lg:w-[60%] z-10 ">
                         <ul className="bg-[#262626] py-4">
-                            <li className="font-dm text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Accesories</li>
-                            <li className="font-dm text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Furniture</li>
-                            <li className="font-dm text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Electronics</li>
-                            <li className="font-dm text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Clothes</li>
-                            <li className="font-dm text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Bags</li>
+                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[8px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Accesories</li>
+                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[8px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Furniture</li>
+                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[8px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Electronics</li>
+                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[8px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Clothes</li>
+                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[8px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Bags</li>
                         </ul>
                     </div>                
                     }
@@ -100,52 +100,52 @@ const Searchbar = () => {
                     <div className="relative">
                         <input 
                             type="text" placeholder="Search Products"
-                            className="w-full h-[50px] pl-5  "
+                            className="w-full h-[36px] lg:h-[50px] lg:pl-5 pl-[4px] text-[10px] lg:text-[20px] "
                         />
                         <div className="absolute top-[50%] translate-y-[-50%] right-[2%]">
-                            <FaSearch className="cursor-pointer" />
+                            <FaSearch className="cursor-pointer text[8px] lg:text-[20px] "/>
                         </div>
                     </div>
                 </div>
                 <div className="w-[30%]">
-                    <div className="flex justify-end gap-[41px] relative ">
+                    <div className="flex justify-end lg:gap-[41px] gap-[20px] relative ">
                         <div className="flex cursor-pointer" ref={userRef}>
                             <FaUser  />
                             <FaCaretDown  />
                         </div>
                         {useShow &&             /* Using ternary operator */
 
-                        <div className="absolute top-[61px] left-[30%] w-[60%] z-10 ">
+                        <div className="absolute top-[61px] left-[-30%] w-[100%] lg:left-[30%] lg:w-[60%] z-10 ">
                             <ul className="bg-[#FFFFFF]  border-[1px] border-gray-300">
-                                <li className="font-dm text-[16px] font-normal text-center text-[#262626]  py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">My Account</li>
-                                <li className="font-dm text-[16px] font-normal text-center text-[#262626]  py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">Log Out</li>
+                                <li className="font-dm text-[12px] font-normal text-center text-[#262626]  py-[8px] lg:py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">My Account</li>
+                                <li className="font-dm text-[12px] font-normal text-center text-[#262626]  py-[8px] lg:py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">Log Out</li>
                             </ul>
                         </div>                       
                         }
-                        <div className="cursor-pointer" ref={cartRef}>
+                        <div className="cursor-pointer lg:pr-0 pr-5 " ref={cartRef}>
                             <FaCartShopping />
                         </div>
                         { cartShow &&
-                        <div className="absolute top-[61px] left-[24%] w-[75%] z-10 ">
+                        <div className="absolute top-[61px]  lg:left-[24%] lg:w-[75%] left-[-141%] w-[215%] z-10 ">
                             <ul className="bg-[#FFFFFF]  border-[1px] border-gray-300 py-[20px]">
                                 <li className="flex justify-around items-center pb-5 ">
-                                    <img src={cart} alt="cart" />
+                                    <img src={cart} alt="cart"  />
                                     <div>
-                                        <h3>Black Smart Watch</h3>
+                                        <h3 className="text-[12px] lg:text-[20px] ">Black Smart Watch</h3>
                                         <span>$44.00</span>
                                     </div>
-                                    <div className="cursor-pointer duration-300 ease-in-out hover:text-red-400 " ref={cartCrossRef}>
+                                    <div className="lg:text-[18px] text-[12px] cursor-pointer duration-300 ease-in-out hover:text-red-400 " ref={cartCrossRef}>
                                     <ImCross />
                                     </div>
                                 </li>
                                 <li className="pl-[20px]">
-                                    <h3 className="font-dm text-[16px] text-black font-normal ">Subtotal: 
-                                        <span className="font-dm text-[16px] text-black font-bold pl-2 ">$44.00</span> 
+                                    <h3 className="font-dm lg:text-[16px] text-[12px] text-black font-normal ">Subtotal: 
+                                        <span className="font-dm lg:text-[16px] text-[12px] text-black font-bold pl-2 ">$44.00</span> 
                                     </h3>
                                 </li>
                                 <li className="flex justify-center gap-3 pt-4 ">
-                                    <a href="#" className="font-dm text-[16px] text-[#767676] font-bold px-9 py-4 border-[#2B2B2B] border-[1px] duration-300 ease-in-out hover:bg-black hover:text-white ">View Cart</a>
-                                    <a href="#" className="font-dm text-[16px] text-black font-bold px-9 py-4 border-[#2B2B2B] border-[1px] duration-300 ease-in-out hover:bg-black hover:text-white ">Checkout</a>
+                                    <a href="#" className="font-dm text-[10px] lg:text-[16px]  text-[#767676] font-bold lg:px-9 px-[12px] lg:py-4 py-[10px] border-[#2B2B2B] border-[1px] duration-300 ease-in-out hover:bg-black hover:text-white ">View Cart</a>
+                                    <a href="#" className="font-dm text-[10px] lg:text-[16px] text-black font-bold lg:px-9 px-[12px] lg:py-4 py-[10px] border-[#2B2B2B] border-[1px] duration-300 ease-in-out hover:bg-black hover:text-white ">Checkout</a>
                                 </li>
                             </ul>
                         </div>

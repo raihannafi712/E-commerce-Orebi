@@ -12,8 +12,8 @@ const Banner = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 1500,
+    // autoplay: true,
+    // autoplaySpeed: 1500,
     cssEase: "linear",
     appendDots: dots => (
       <div
@@ -34,7 +34,8 @@ const Banner = () => {
           width: "30px",
           borderRight: "2px solid white",
           padding: "10px 0",
-          color:"transparent"
+          color:"transparent",
+          fontSize: "9px"
         }}
       >
         0{i + 1}
@@ -45,19 +46,9 @@ const Banner = () => {
 
     <section>
       <Slider {...settings}> 
-        <div>
+        <div className="text-center  ">
           <a href="#" >
-              <img src={banner} alt="banner" className="w-max-[101%] "  />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
-          </a>
-        </div>
-        <div>
-          <a href="#">
-              <img src={banner} alt="banner" className="bg-no-repeat" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
-          </a>
-        </div>
-        <div>
-          <a href="#">
-              <img src={banner} alt="banner" className="bg-no-repeat" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
+              <img src={banner} alt="banner" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
           </a>
         </div>
         <div>
@@ -67,7 +58,17 @@ const Banner = () => {
         </div>
         <div>
           <a href="#">
-              <img src={banner} alt="banner" className="bg-no-repeat" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
+              <img src={banner} alt="banner" className="" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
+          </a>
+        </div>
+        <div>
+          <a href="#">
+              <img src={banner} alt="banner" className="" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
+          </a>
+        </div>
+        <div>
+          <a href="#">
+              <img src={banner} alt="banner" className="" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
           </a>
         </div>
       </Slider>
