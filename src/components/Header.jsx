@@ -18,7 +18,7 @@ const Header = () => {
                 <div className='w-2/3'>
                     <ul className={`lg:flex w-full pb-1  text-center  capitalize ${
                         show == true 
-                        ? "backdrop-blur-md absolute top-[70px] left-[-500px] lg:static z-30 duration-700 ease-in-out  " 
+                        ? " absolute top-[70px] left-[-600px] lg:static z-30 duration-700 ease-in-out  " 
                         : "backdrop-blur-md bg-transparent absolute left-0 top-[70px] z-30 duration-700 ease-in-out " 
                         }`} >
                         <li className='mx-6 py-1'>

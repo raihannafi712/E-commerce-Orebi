@@ -32,44 +32,25 @@ const Searchbar = () => {
             }else{
                 setCategoryShow(categoryShow)
             }   
-        })
-    },[categoryShow])                         /*useEffect occurs only once,so giving the variable inside makes it a loop  */
-
-
-    useEffect(()=>{
-        document.addEventListener("click",(e)=>{
-
             if (userRef.current.contains(e.target)) {         /* For User btn */
                 setUseShow (!useShow)
             } else {
                 setUseShow (false)
             }
-        })
-    },[useShow] )
-
-    useEffect(()=>{
-        document.addEventListener("click",(e)=>{
-            
             if (cartRef.current.contains(e.target)) {         /* For Cart btn */
                 setCartShow (!cartShow)
             } else  {
                 setCartShow (setCartShow)
             }
-        })
-    },[cartShow] )
-
-    useEffect(()=>{
-        document.addEventListener("click",(e)=>{
-            
             if (cartCrossRef.current.contains(e.target)) {     /* For cross btn */
                 setCartShow (!cartShow)
             } else  {
                 setCartShow (setCartShow)
             }
-        })    
-    },[cartShow] )
-
-      /* Dropdown logic end */
+        })
+    },[categoryShow , useShow , cartShow])                         /*useEffect occurs only once,so giving the variable inside makes it a loop  */
+      
+    /* Dropdown logic end */
 
 
   return (
@@ -87,11 +68,11 @@ const Searchbar = () => {
 
                     <div className="absolute top-[61px] left-0 w-[119%] lg:w-[60%] z-10 ">
                         <ul className="bg-[#262626] py-4">
-                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[8px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Accesories</li>
-                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[8px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Furniture</li>
-                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[8px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Electronics</li>
-                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[8px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Clothes</li>
-                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] py-[8px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Bags</li>
+                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] lg:py-[16px] py-[8px]   cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Accesories</li>
+                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] lg:py-[16px] py-[8px]   cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Furniture</li>
+                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] lg:py-[16px] py-[8px]   cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Electronics</li>
+                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] lg:py-[16px] py-[8px]   cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Clothes</li>
+                            <li className="font-dm text-[12px] lg:text-[16px] font-normal text-[rgb(255,255,255,70%)] pl-[21px] lg:py-[16px] py-[8px]   cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:pl-8 ">Bags</li>
                         </ul>
                     </div>                
                     }
@@ -117,8 +98,8 @@ const Searchbar = () => {
 
                         <div className="absolute top-[61px] left-[-30%] w-[100%] lg:left-[30%] lg:w-[60%] z-10 ">
                             <ul className="bg-[#FFFFFF]  border-[1px] border-gray-300">
-                                <li className="font-dm text-[12px] font-normal text-center text-[#262626]  py-[8px] lg:py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">My Account</li>
-                                <li className="font-dm text-[12px] font-normal text-center text-[#262626]  py-[8px] lg:py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">Log Out</li>
+                                <li className="font-dm lg:text-[16px] text-[12px] font-normal text-center text-[#262626]  py-[8px] lg:py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">My Account</li>
+                                <li className="font-dm lg:text-[16px] text-[12px] font-normal text-center text-[#262626]  py-[8px] lg:py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">Log Out</li>
                             </ul>
                         </div>                       
                         }

@@ -1,3 +1,4 @@
+import Arrivals from "./components/Arrivals"
 import Banner from "./components/Banner"
 import Header from "./components/Header"
 import Sales from "./components/Sales"
@@ -12,6 +13,7 @@ function App() {
       <Searchbar/>
       <Banner/>
       <Sales/>
+      <Arrivals/>
     </>
   )
 }
