@@ -47,27 +47,27 @@ const Banner = () => {
       <Slider {...settings}> 
         <div className="text-center  ">
           <a href="#" >
-              <img src={banner} alt="banner" className="w-full" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
+              <img src={banner} alt="banner" className="w-full mx-auto" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
           </a>
         </div>
         <div>
           <a href="#">
-              <img src={banner} alt="banner" className="" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
+              <img src={banner} alt="banner" className="w-full mx-auto" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
           </a>
         </div>
         <div>
           <a href="#">
-              <img src={banner} alt="banner" className="" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
+              <img src={banner} alt="banner" className="w-full mx-auto" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
           </a>
         </div>
         <div>
           <a href="#">
-              <img src={banner} alt="banner" className="" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
+              <img src={banner} alt="banner" className="w-full mx-auto"/>    {/* In E-commerce sites, the banners are a whole anchor tag images */}
           </a>
         </div>
         <div>
           <a href="#">
-              <img src={banner} alt="banner" className="" />    {/* In E-commerce sites, the banners are a whole anchor tag images */}
+              <img src={banner} alt="banner" className="w-full mx-auto"/>    {/* In E-commerce sites, the banners are a whole anchor tag images */}
           </a>
         </div>
       </Slider>

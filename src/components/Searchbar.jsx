@@ -81,7 +81,7 @@ const Searchbar = () => {
                     <div className="relative">
                         <input 
                             type="text" placeholder="Search Products"
-                            className="w-full h-[36px] lg:h-[50px] lg:pl-5 pl-[4px] text-[10px] lg:text-[20px] "
+                            className="w-full h-[36px] lg:h-[50px] lg:pl-5 pl-[4px] text-[10px] lg:text-[20px] -outline-offset-1 "
                         />
                         <div className="absolute top-[50%] translate-y-[-50%] right-[2%]">
                             <FaSearch className="cursor-pointer text[8px] lg:text-[20px] "/>
