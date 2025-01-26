@@ -1,24 +1,52 @@
 import React, { useEffect, useState } from "react";
 import Container from "./Container";
-import neck from '../assets/neck.png';
-import { FaHeart } from "react-icons/fa";
+import { FaBold, FaHeart } from "react-icons/fa";
 import { GrPowerCycle } from "react-icons/gr";
 import { FaShoppingCart } from "react-icons/fa";
+import { FcNext , FcPrevious  } from "react-icons/fc";
+
 import axios from 'axios';
 import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
 
 
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, position:"absolute", right:"0" ,top:"45%" , width:"40px" , height:"40px" ,
+        background:"#979797" ,color:"white" , borderRadius:"50%" , display:"flex" , justifyContent:"center" ,
+        alignItems:"center" , zIndex:"10" , cursor:"pointer" ,
+       }}
+      onClick={onClick}
+    > <FcNext /> </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, position:"absolute", left:"0" ,top:"45%" , width:"40px" , height:"40px" ,
+         background:"#979797" ,color:"white" , borderRadius:"50%" , display:"flex" , justifyContent:"center" ,
+         alignItems:"center" , zIndex:"10" , cursor:"pointer" ,
+        }}
+      onClick={onClick}
+      > <FcPrevious /></div>
+  );
+}
 
 const Arrivals = () => {
 
-  const settings = {
+  const newSlide = {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
-    // autoplay: true,
-    // autoplaySpeed: 1500,
+    slidesToScroll: 2,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />
   };
 
   let [data,setData] = useState([])
@@ -42,9 +70,9 @@ const Arrivals = () => {
           <div>
             <h3 className="font-dm text-[39px] font-bold ">New Arrivals</h3>
           </div>
-          <Slider {...settings}>
+          <Slider {...newSlide}>
             {data.map((item)=>(
-            <div className="w-[24%] ">                                           {/* whole box */}
+            <div className="!w-[95%]">                                           {/* whole box */}
               <div className="relative mb-6 group overflow-hidden cursor-pointer ">
                 <img src={item.thumbnail} alt="product" />                        {/* item and thumbnail comes from the profuct API */}
                 <div className="w-full h-[0px] opacity-0 bg-white absolute bottom-0 left-0 group-hover:h-[156px] duration-300 ease-in-out group-hover:opacity-100 ">

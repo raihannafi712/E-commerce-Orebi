@@ -4,7 +4,7 @@
 
 /* External css */
 
-.slick-active div{
+.slick-dots .slick-active div{
     border-right: 2px solid black !important;
     color: black !important;
     transition: ease-in !important;
@@ -13,5 +13,4 @@
     -ms-transition: ease-in !important;
     -o-transition: ease-in !important;
     transition-duration: 500ms !important;
-
 }
