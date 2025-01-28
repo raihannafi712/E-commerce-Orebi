@@ -14,33 +14,33 @@ const Footer = () => {
             <div>
                 <div className="flex py-[60px] ">
                     <div className="w-[15%] ">
-                        <h3 className="font-dm font-bold text-[18px] text-black ">Menu</h3>
+                        <h3 className="font-dm font-bold text-[18px] text-black ">MENU</h3>
                         <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
-                            <li className="my-[3px] "><a href="#">Home</a></li>
-                            <li className="my-[3px] "><a href="#">Shop</a></li>
-                            <li className="my-[3px] "><a href="#">About</a></li>
-                            <li className="my-[3px] "><a href="#">Contact</a></li>
-                            <li className="my-[3px] "><a href="#">Journal</a></li>
+                            <li className="my-[10px] "><a href="/">Home</a></li>
+                            <li className="my-[10px] "><a href="/shop">Shop</a></li>
+                            <li className="my-[10px] "><a href="/about">About</a></li>
+                            <li className="my-[10px] "><a href="/contact">Contact</a></li>
+                            <li className="my-[10px] "><a href="/journal">Journal</a></li>
                         </ul>
                     </div>
                     <div className="w-[15%] ">
-                        <h3 className="font-dm font-bold text-[18px] text-black ">Menu</h3>
+                        <h3 className="font-dm font-bold text-[18px] text-black capitalize ">SHOP</h3>
                         <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
-                            <li className="my-[3px] "><a href="#">Category 1</a></li>
-                            <li className="my-[3px] "><a href="#">Category 2</a></li>
-                            <li className="my-[3px] "><a href="#">Category 3</a></li>
-                            <li className="my-[3px] "><a href="#">Category 4</a></li>
-                            <li className="my-[3px] "><a href="#">Category 5</a></li>
+                            <li className="my-[10px] "><a href="#">Category 1</a></li>
+                            <li className="my-[10px] "><a href="#">Category 2</a></li>
+                            <li className="my-[10px] "><a href="#">Category 3</a></li>
+                            <li className="my-[10px] "><a href="#">Category 4</a></li>
+                            <li className="my-[10px] "><a href="#">Category 5</a></li>
                         </ul>
                     </div>
                     <div className="w-[15%] ">
-                    <h3 className="font-dm font-bold text-[18px] text-black ">Menu</h3>
+                    <h3 className="font-dm font-bold text-[18px] text-black ">HELP</h3>
                         <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
-                            <li className="my-[3px] "><a href="#">Privacy Policy</a></li>
-                            <li className="my-[3px] "><a href="#">Terms & Conditions</a></li>
-                            <li className="my-[3px] "><a href="#">Special E-shop</a></li>
-                            <li className="my-[3px] "><a href="#">Shipping</a></li>
-                            <li className="my-[3px] "><a href="#">Secure Payments</a></li>
+                            <li className="my-[10px] "><a href="#">Privacy Policy</a></li>
+                            <li className="my-[10px] "><a href="#">Terms & Conditions</a></li>
+                            <li className="my-[10px] "><a href="#">Special E-shop</a></li>
+                            <li className="my-[10px] "><a href="#">Shipping</a></li>
+                            <li className="my-[10px] "><a href="#">Secure Payments</a></li>
                         </ul>
                     </div>
                     <div className="w-[30%] text-center ">

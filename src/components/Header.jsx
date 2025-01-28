@@ -3,6 +3,8 @@ import Container from "./Container";
 import logo from '../assets/logo.png';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
+import { Link } from "react-router-dom";
+import Home from "../pages/Home";
 
 const Header = () => {
 
@@ -25,35 +27,35 @@ const Header = () => {
                             <a 
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
-                                Home
+                              <Link to="/">Home</Link>
                             </a>
                         </li>
                         <li className='mx-6 py-1'>
                         <a 
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
-                                Shop
+                                <Link to="/shop">Shop</Link>
                             </a>
                         </li>
                         <li className='mx-6 py-1 relative group'>
                             <a 
                                 className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                                 href="#">
-                                About
+                                <Link to="/about">About</Link>
                             </a>
                         </li>
                         <li className='mx-6 py-1'>
                         <a 
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
-                                Contacts
+                                <Link to="/contacts">Contacts</Link>
                             </a>
                         </li>
                         <li className='mx-6 py-1'>
                         <a 
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
-                                Journal
+                                <Link to="/journal">Journal</Link>
                             </a>
                         </li>
                     </ul>

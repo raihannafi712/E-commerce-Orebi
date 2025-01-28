@@ -8,6 +8,7 @@ import { FcNext , FcPrevious  } from "react-icons/fc";
 import axios from 'axios';
 import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 
 
 function SampleNextArrow(props) {
@@ -74,7 +75,7 @@ const Arrivals = () => {
             {data.map((item)=>(
             <div className="!w-[95%]">                                           {/* whole box */}
               <div className="relative mb-6 group overflow-hidden cursor-pointer ">
-                <img src={item.thumbnail} alt="product" />                        {/* item and thumbnail comes from the profuct API */}
+                <Link to="/shop"><img src={item.thumbnail} alt="product" /></Link>                        {/* item and thumbnail comes from the profuct API */}
                 <div className="w-full h-[0px] opacity-0 bg-white absolute bottom-0 left-0 group-hover:h-[156px] duration-300 ease-in-out group-hover:opacity-100 ">
                   <ul>
                     <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Wish List <FaHeart /></li>
@@ -84,7 +85,7 @@ const Arrivals = () => {
                 </div>
               </div>
               <div className="flex items-center justify-between">
-                <a className="font-dm text-[16px] font-bold hover:underline " href="#">{item.title} </a>
+                <a className="font-dm text-[16px] font-bold hover:underline " href="/shop">{item.title} </a>
                 <h4 className="font-dm text-[16px] font-normal ">${item.price} </h4>
               </div>
               <div>
