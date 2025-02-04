@@ -13,7 +13,7 @@ const Footer = () => {
         <Container>
             <div>
                 <div className="flex py-[60px] ">
-                    <div className="w-[15%] ">
+                    <div className="w-1/3 lg:w-[15%] ">
                         <h3 className="font-dm font-bold text-[18px] text-black ">MENU</h3>
                         <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
                             <li className="my-[10px] "><a href="/">Home</a></li>
@@ -23,7 +23,7 @@ const Footer = () => {
                             <li className="my-[10px] "><a href="/journal">Journal</a></li>
                         </ul>
                     </div>
-                    <div className="w-[15%] ">
+                    <div className="w-1/3 lg:w-[15%] ">
                         <h3 className="font-dm font-bold text-[18px] text-black capitalize ">SHOP</h3>
                         <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
                             <li className="my-[10px] "><a href="#">Category 1</a></li>
@@ -33,7 +33,7 @@ const Footer = () => {
                             <li className="my-[10px] "><a href="#">Category 5</a></li>
                         </ul>
                     </div>
-                    <div className="w-[15%] ">
+                    <div className="w-1/3 lg:w-[15%] ">
                     <h3 className="font-dm font-bold text-[18px] text-black ">HELP</h3>
                         <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
                             <li className="my-[10px] "><a href="#">Privacy Policy</a></li>
@@ -43,13 +43,13 @@ const Footer = () => {
                             <li className="my-[10px] "><a href="#">Secure Payments</a></li>
                         </ul>
                     </div>
-                    <div className="w-[30%] text-center ">
+                    <div className="lg:w-[80%] text-center ">
                         <div>
                             <h3>(052) 611-5711</h3>
                             <h3>company@domain.com</h3>
                         </div>
                     </div>
-                    <div className="w-[25%] text-center ">
+                    <div className="lg:w-[25%] text-center ">
                         <div className="flex justify-center ">
                             <img src={logo} alt="" />
                         </div>

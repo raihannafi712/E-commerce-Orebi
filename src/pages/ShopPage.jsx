@@ -8,11 +8,7 @@ const ShopPage = () => {
   return (
 
     <>
-        <Header/>
-        <Searchbar/>
         <Shop/>
-        <Footer/>
-
     </>
   )
 };

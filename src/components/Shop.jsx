@@ -4,6 +4,7 @@ import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoGrid } from "react-icons/io5";
 import { FaListUl } from "react-icons/fa6";
+import Post from "./pagination/Post";
 
 
 
@@ -78,41 +79,42 @@ const Shop = () => {
                     </ul>
                  </div>
               </div>
-              <div className="w-[85%] text-center ">
+              <div className="w-[85%] text-center pl-10 ">
                   <div className="flex items-center">
-                    <div className="w-[40%] flex gap-[20px] items-center pl-6 ">
-                      <div className="p-[10px] bg-white hover:text-white hover:bg-black ease-in-out duration-300 ">
+                    <div className="w-[40%] flex gap-[20px] items-center ">
+                      <div className="p-[10px] bg-white hover:text-white hover:bg-black ease-in-out duration-300 cursor-pointer ">
                         <IoGrid />
                       </div>
-                      <div className="p-[10px] bg-white hover:text-white hover:bg-black ease-in-out duration-300 ">
+                      <div className="p-[10px] bg-white hover:text-white hover:bg-black ease-in-out duration-300 cursor-pointer ">
                         <FaListUl />
                       </div>
                     </div>
                     <div className="w-[25%] ">
                       <div className="flex ">
-                        <h3 className="text-[16px] font-normal font-dm pr-1">Sort by:</h3>
-                        <select name="cate" id="cate" className="w-[70%] border-black border-[1px] ">
-                          <option value="valOne" className="text-right ">Sort 1</option>
-                          <option value="valOne" className="text-right ">Sort 2</option>
-                          <option value="valOne" className="text-right ">Sort 3</option>
-                          <option value="valOne" className="text-right ">Sort 4</option>
-                          <option value="valOne" className="text-right ">Sort 5</option>
+                        <h3 className="text-[16px] font-normal font-dm pr-3">Sort by:</h3>
+                        <select name="cate" id="cate" className="w-[70%] border-black border-[1px] duration-300 ease-in-out ">
+                          <option value="valOne" className="text-center ">Sort 1</option>
+                          <option value="valOne" className="text-center ">Sort 2</option>
+                          <option value="valOne" className="text-center ">Sort 3</option>
+                          <option value="valOne" className="text-center ">Sort 4</option>
+                          <option value="valOne" className="text-center ">Sort 5</option>
                         </select>
                       </div>
                     </div>
-                    <div className="w-[35%] flex justify-start ">
-                      <div className="flex">
-                        <h3 className="text-[16px] font-normal font-dm">Show:</h3>
-                        <select name="cate" id="cate" className="w-[60%] border-black border-[1px] ">
-                          <option value="valOne" className="text-right ">Sort 1</option>
-                          <option value="valOne" className="text-right ">Sort 2</option>
-                          <option value="valOne" className="text-right ">Sort 3</option>
-                          <option value="valOne" className="text-right ">Sort 4</option>
-                          <option value="valOne" className="text-right ">Sort 5</option>
+                    <div className="w-[35%]">
+                      <div className="flex justify-end">
+                        <h3 className="text-[16px] font-normal font-dm pr-3">Show:</h3>
+                        <select name="cate" id="cate" className="w-[40%] border-black border-[1px] ">
+                          <option value="valOne" className="text-center ">10</option>
+                          <option value="valOne" className="text-center ">20</option>
+                          <option value="valOne" className="text-center ">30</option>
+                          <option value="valOne" className="text-center ">40</option>
+                          <option value="valOne" className="text-center ">50</option>
                         </select>
                       </div>
                     </div>
                   </div>
+                  <Post/>
               </div>
             </div>
         </Container>

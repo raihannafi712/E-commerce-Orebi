@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "./Container";
 import { FaBold, FaHeart } from "react-icons/fa";
 import { GrPowerCycle } from "react-icons/gr";
@@ -8,6 +8,7 @@ import year from '../assets/year.png';
 import axios from 'axios';
 import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
+import { ApiData } from "./ContextApi";
 
 
 function SampleNextArrow(props) {
@@ -49,20 +50,7 @@ const Products = () => {
         prevArrow: <SamplePrevArrow />
     };
 
-    let [data,setData] = useState([])
-
-    let getData = ()=>{
-      axios.get("https://dummyjson.com/products").then((response)=>{
-        // console.log(response.data.products);
-        setData(response.data.products);
-        
-      })
-    }
-  
-    useEffect(()=>{
-      getData()
-    },[])
-    // console.log(data);     /* To see all the data */
+    let dataFromContext = useContext(ApiData);
 
     // fetch added
 
@@ -78,18 +66,18 @@ const Products = () => {
 
   return (
 
-    <section className="my-[123px] ">
+    <section className=" my-[20px] lg:my-[123px] ">
         <Container>
           <div>
-            <h3 className="font-dm text-[39px] font-bold ">Products</h3>
+            <h3 className="font-dm text-[24px] text-center lg:text-start lg:text-[39px] font-bold ">Products</h3>
           </div>
           <Slider {...newSlide}>
-            {data.map((item)=>(
+            {dataFromContext.map((item)=>(
             <div className="!w-[95%]">                                           {/* whole box */}
               <div className="relative mb-6 group overflow-hidden cursor-pointer ">
                 <img src={item.thumbnail} alt="product" />                        {/* item and thumbnail comes from the profuct API */}
                 <div>
-                    <h3 className="font-dm font-bold text-[16px] text-[white] bg-[#262626] px-[25px] py-[6px] inline-block absolute top-[0%] left-[0%] mt-4 ml-4 ">New</h3>
+                    <h3 className="font-dm font-bold text-[8px] lg:text-[16px] text-[white] bg-[#262626] px-[10px] lg:px-[25px] py-[4px] lg:py-[6px] inline-block absolute top-[0%] left-[0%] mt-2 lg:mt-4 ml-2 lg:ml-4 ">New</h3>
                 </div>
                 {/* <div className="w-full h-[0px] opacity-0 bg-white absolute bottom-0 left-0 group-hover:h-[156px] duration-300 ease-in-out group-hover:opacity-100 ">
                   <ul>
@@ -99,19 +87,19 @@ const Products = () => {
                   </ul>
                 </div> */}
               </div>
-              <div className="flex items-center justify-between">
-                <a className="font-dm text-[16px] font-bold hover:underline " href="#">{item.title} </a>
-                <h4 className="font-dm text-[16px] font-normal ">${item.price} </h4>
+              <div className=" lg:flex items-center justify-between text-center">
+                <a className="font-dm  text-[12px] lg:text-[16px] font-bold hover:underline " href="#">{item.title} </a>
+                <h4 className="font-dm text-[12px] lg:text-[16px] font-normal ">${item.price} </h4>
               </div>
               <div>
-                <h4 className="font-dm text-[16px] font-normal ">Black</h4>
+                <h4 className="font-dm text-[12px] lg:text-[16px] text-center lg:text-start font-normal ">Black</h4>
               </div>
             </div>
             ))}
           </Slider>
             
             {/* year start */}
-            <div className="my-32">
+            <div className=" my-7 lg:my-32">
                 <a href="#"><img src={year} alt="year" /></a>
             </div>
             {/* year end */}

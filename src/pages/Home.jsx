@@ -12,13 +12,10 @@ import ShopPage from "./ShopPage";
 const Home = () => {
   return (
     <>
-      <Header/>
-      <Searchbar/>
       <Banner/>
       <Sales/>
       <Arrivals/>
       <Products/>
-      <Footer/>
     </>
   )
 };
