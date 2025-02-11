@@ -160,7 +160,7 @@ let [show4 , setShow4] = useState(true)
             </div>
             <div className="pt-[116px] ">
               <a href="#" className="font-dm lg:text-[14px] text-[12px] font-bold text-center text-[#262626]  py-[8px] lg:py-[15px] px-[47px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] border-[1px] border-gray-300 mr-6 ">
-              Add to Wish List
+              Post review
               </a>
             </div>
           </div>
