@@ -27,7 +27,9 @@ const Header = () => {
                             <a 
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
-                              <Link to="/">Home</Link>
+                              <Link to="/"
+                              
+                              >Home</Link>
                             </a>
                         </li>
                         <li className='mx-6 py-1'>
