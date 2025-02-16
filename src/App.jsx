@@ -6,6 +6,11 @@ import {createBrowserRouter , createRoutesFromElements , RouterProvider , Router
 import ShopPage from "./pages/ShopPage"
 import DetailsPage from "./pages/DetailsPage"
 import Layout from "./components/Layout"
+import AboutPage from "./pages/AboutPage"
+import Contacts from "./pages/Contacts"
+import CartPage from "./pages/CartPage"
+import ErrorPage from "./pages/ErrorPage"
+import AccountPage from "./pages/AccountPage"
 
 let routerVar = createBrowserRouter(createRoutesFromElements(
 
@@ -13,6 +18,12 @@ let routerVar = createBrowserRouter(createRoutesFromElements(
     <Route index element={<Home/>} ></Route>
     <Route path="/shop" element={<ShopPage/>} ></Route>
     <Route path="/shop/:id" element={<DetailsPage/>} ></Route>
+    <Route path="/about" element={<AboutPage/>} ></Route>
+    <Route path="/contacts" element={<Contacts/>} ></Route>
+    <Route path="/login" element={<Contacts/>} ></Route>
+    <Route path="/cart" element={<CartPage/>} ></Route>
+    <Route path="*" element={<ErrorPage/>} ></Route>
+    <Route path="/accounts" element={<AccountPage/>} ></Route>
   </Route>
 ))
 

@@ -1,17 +1,19 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import Container from "../components/Container";
 import { FaAngleRight } from "react-icons/fa";
 import { RxStarFilled } from "react-icons/rx";
 import { IoStarHalfOutline , IoStarOutline  } from "react-icons/io5";
 import { FaPlus , FaMinus  } from "react-icons/fa";
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 
 
 
 
 const DetailsPage = () => {
 
+  // API Data
   let productId = useParams();
   // console.log(productId);
 
@@ -27,14 +29,11 @@ const DetailsPage = () => {
   useEffect(()=>{
     singleData();
   },[])
+  // API data 
 
   // dropdown start
-
   let [show , setShow] = useState(true)
-let [show1 , setShow1] = useState(true)
-let [show2 , setShow2] = useState(true)
-let [show3 , setShow3] = useState(true)
-let [show4 , setShow4] = useState(true)
+  let [show1 , setShow1] = useState(true)
 
   let handleFaq = ()=>{
     setShow(!show)
@@ -42,17 +41,29 @@ let [show4 , setShow4] = useState(true)
   let handleFaq1 = ()=>{
       setShow1(!show1)
   }
-  let handleFaq2 = ()=>{
-      setShow2(!show2)
-  }
-  let handleFaq3 = ()=>{
-      setShow3(!show3)
-  }
-  let handleFaq4 = ()=>{
-      setShow4(!show4)
-  }
-  
   // dropdown end
+
+  // rating start
+
+  let clientRating = Array.from({length:5},(_ , index)=>{      /* _ is for blank spaces */
+    let number = index + 0.5
+    return singleProduct.rating > index + 1 ? <RxStarFilled/> : singleProduct.rating > number ? <IoStarHalfOutline /> : <IoStarOutline/>
+  } )
+  console.log(clientRating);
+  
+  // rating end
+
+
+  // Tostify start
+
+  let navigate = useNavigate()         /* We're using usenavigate method instead of Link to use tostify */
+  let handleCart = ()=>{
+    toast('Added to Cart!')
+    setTimeout(() => {
+      navigate('/cart')
+    }, [2500])
+  }
+  // Tostify end
   
 
   return (
@@ -61,12 +72,12 @@ let [show4 , setShow4] = useState(true)
       <Container>
         <div>
           <div className="flex text-[12px] font-normal font-dm text-[#767676] items-center mt-2 ">
-            <Link to="/" className="hover:text-black hover:underline">Home</Link>
-            <p> <FaAngleRight /></p>
             <Link to="/shop" className="hover:text-black hover:underline">Products</Link>
+            <p> <FaAngleRight /></p>
+            <Link to="#"  className="hover:text-black hover:underline">Item</Link>
           </div>
         </div>
-        <div className="w-[100%] py-[200px] ">
+        <div className="w-[100%] py-[60px] ">
           <div>
             <img className="mx-auto " src={singleProduct.thumbnail} alt="" />
           </div>
@@ -77,12 +88,14 @@ let [show4 , setShow4] = useState(true)
             <h3 className="font-dm text-[12px] text-center lg:text-start lg:text-[16px] font-normal pt-3  ">{singleProduct.description}</h3>
             </div>
             <div className="flex pt-6">
-              <RxStarFilled/>
+              {/* <RxStarFilled/>
               <IoStarHalfOutline />
-              <IoStarOutline/>
-              <h2 className="font-dm font-normal text-[14px] pl-6 ">
-                1 Review
-              </h2>
+              <IoStarOutline/> */}
+              {clientRating}
+              <span className="font-dm font-normal text-[14px] pl-6 ">
+                {" "}
+                {singleProduct?.reviews?.length} reviews
+              </span>
             </div>
             <div className="flex pt-1 items-center ">
               <h3 className="font-dm font-normal text-[16px] line-through">88.00</h3>
@@ -113,10 +126,23 @@ let [show4 , setShow4] = useState(true)
               <h3 className="font-dm font-bold text-[16px] mr-11 ">STOCK:</h3>
               <h3 className="font-dm font-medium text-[15px] mr-11 ">{singleProduct.stock} </h3>
             </div>
-            <div  className="flex pt-[30px] items-center ">
+            <div  className="flex pt-[30px] items-center ">             
               <ul className="flex bg-[#FFFFFF]  ">
                 <li className="font-dm lg:text-[14px] text-[12px] font-bold text-center text-[#262626]  py-[8px] lg:py-[15px] px-[47px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] border-[1px] border-gray-300 mr-6 ">Add to Wish List</li>
-                <li className="font-dm lg:text-[14px] text-[12px] font-bold text-center text-[#262626]  py-[8px] lg:py-[15px] px-[47px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] border-[1px] border-gray-300 ">Add to Cart</li>
+                <li onClick={handleCart} className="font-dm lg:text-[14px] text-[12px] font-bold text-center text-[#262626]  py-[8px] lg:py-[15px] px-[47px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] border-[1px] border-gray-300 ">Add to Cart</li>
+                <ToastContainer
+                  position="top-right"
+                  autoClose={2000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick={false}
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="dark"
+                  transition={Bounce}
+                />
               </ul>
             </div>
           </div>

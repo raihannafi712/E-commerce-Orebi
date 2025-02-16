@@ -23,13 +23,17 @@ const Post = () => {
           <Link to={`${item.id}`} ><img src={item.thumbnail} alt="product" /></Link>                        {/* each item has different id, so it needs to be set dynamically */}
           <div className="w-full h-[0px] opacity-0 bg-white absolute bottom-0 left-0 group-hover:h-[156px] duration-300 ease-in-out group-hover:opacity-100 ">
             <ul>
-              <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Wish List <FaHeart /></li>
-              <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Compare <GrPowerCycle /></li>
-              <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Cart <FaShoppingCart /></li>
+              <Link to={`${item.id}`} >
+                <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Wish List <FaHeart /></li>
+                <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Compare <GrPowerCycle /></li>
+                <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Cart <FaShoppingCart /></li>             
+              </Link>
             </ul>
           </div>
           <div>
-            <h3 className="font-dm font-bold text-[16px] text-[white] bg-[#262626] px-[25px] py-[6px] inline-block absolute top-[0%] left-[0%] mt-4 ml-4 ">{item.discountPercentage} % </h3>
+            <Link to={`${item.id}`}>
+              <h3 className="font-dm font-bold text-[16px] text-[white] bg-[#262626] px-[25px] py-[6px] inline-block absolute top-[0%] left-[0%] mt-4 ml-4 ">{item.discountPercentage} % </h3>           
+            </Link>
           </div>
         </div>
         <div className="flex items-center justify-between">

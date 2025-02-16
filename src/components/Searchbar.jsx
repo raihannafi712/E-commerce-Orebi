@@ -7,6 +7,7 @@ import { FaUser , FaCaretDown } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
 import cart from '../assets/cartimg.png';
+import { Link } from 'react-router-dom';
 
 
 
@@ -98,8 +99,16 @@ const Searchbar = () => {
 
                         <div className="absolute top-[61px] left-[-30%] w-[100%] lg:left-[30%] lg:w-[60%] z-10 ">
                             <ul className="bg-[#FFFFFF]  border-[1px] border-gray-300">
-                                <li className="font-dm lg:text-[16px] text-[12px] font-normal text-center text-[#262626]  py-[8px] lg:py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">My Account</li>
-                                <li className="font-dm lg:text-[16px] text-[12px] font-normal text-center text-[#262626]  py-[8px] lg:py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">Log Out</li>
+                                <Link to="/accounts">
+                                    <li className="font-dm lg:text-[16px] text-[12px] font-normal text-center text-[#262626]  py-[8px] lg:py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">
+                                        My Account                             
+                                    </li>
+                                </Link>
+                                <Link to="">
+                                    <li className="font-dm lg:text-[16px] text-[12px] font-normal text-center text-[#262626]  py-[8px] lg:py-[15px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] ">
+                                        <Link to="" >Log Out</Link>
+                                    </li>                             
+                                </Link>
                             </ul>
                         </div>                       
                         }

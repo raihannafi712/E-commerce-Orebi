@@ -23,7 +23,7 @@ const Header = () => {
                         ? " absolute top-[70px] left-[-600px] lg:static z-30 duration-700 ease-in-out  " 
                         : "backdrop-blur-md bg-transparent absolute left-0 top-[70px] z-30 duration-700 ease-in-out " 
                         }`} >
-                        <li className='mx-6 py-1'>
+                        <li className='mx-8 py-1'>
                             <a 
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
@@ -51,13 +51,6 @@ const Header = () => {
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
                                 <Link to="/contacts">Contacts</Link>
-                            </a>
-                        </li>
-                        <li className='mx-6 py-1'>
-                        <a 
-                            className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
-                            href="#">
-                                <Link to="/journal">Journal</Link>
                             </a>
                         </li>
                     </ul>
