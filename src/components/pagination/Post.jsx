@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBold, FaHeart } from "react-icons/fa";
 import { GrPowerCycle } from "react-icons/gr";
@@ -8,10 +8,11 @@ import { ApiData } from "../ContextApi";
 
 
 
-const Post = () => {
+const Post = ({ allPage, categoryFilter }) => {
 
   let data = useContext(ApiData);
   // console.log(data);
+
   
 
   return (

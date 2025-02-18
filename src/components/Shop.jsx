@@ -1,14 +1,82 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "./Container";
 import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoGrid } from "react-icons/io5";
 import { FaListUl } from "react-icons/fa6";
 import Post from "./pagination/Post";
+import Pagination from "./pagination/Pagination";
+import { ApiData } from "./ContextApi";
 
 
 
 const Shop = () => {
+
+  // test start
+
+  let info = useContext(ApiData);
+  let [currentPage, setCurrentPage] = useState(1);
+  let [perPage, setPerPage] = useState(6);
+  let [category, setCategory] = useState([]);
+  let [categoryFilter, setCategoryFilter] = useState([]);
+  let [brand, setBrand] = useState([]);
+
+  let lastPage = currentPage * perPage;
+  let firstPage = lastPage - perPage;
+  let allPage = info.slice(firstPage, lastPage);
+
+  let pageNumber = [];
+
+  for (
+    let i = 0;
+    i <
+    Math.ceil(
+      categoryFilter.length > 0 ? categoryFilter : info.length / perPage
+    );
+    i++
+  ) {
+    pageNumber.push(i);
+  }
+
+  let paginate = (state) => {
+    setCurrentPage(state + 1);
+  };
+
+  let next = () => {
+    if (currentPage < pageNumber.length) {
+      setCurrentPage((state) => state + 1);
+    }
+  };
+
+  let previous = () => {
+    if (currentPage > 1) {
+      setCurrentPage((state) => state - 1);
+    }
+  };
+
+  useEffect(() => {
+    setCategory([...new Set(info.map((item) => item.category))]);
+    setBrand([...new Set(info.map((item) => item.brand))]);
+  }, [info]);
+
+  let handleCategory = (citem) => {
+    let cateFilter = info.filter((item) => item.category == citem);
+    setCategoryFilter(cateFilter);
+  };
+
+
+  let handleBrand = (bitem) =>{
+    let brandFilter = info.filter((item) => item.brand == bitem); 
+    setCategoryFilter(brandFilter);
+  }
+
+  console.log(categoryFilter);
+
+  // test end
+
+  
+
+
   return (
 
     <section>
@@ -114,8 +182,17 @@ const Shop = () => {
                       </div>
                     </div>
                   </div>
-                  <Post/>
+                  <Post/>                  
               </div>
+            </div>
+            <div className="text-center pb-20 ">
+              <Pagination
+                pageNumber={pageNumber}
+                paginate={paginate}
+                next={next}
+                currentPage={currentPage}
+                previous={previous}
+              />
             </div>
         </Container>
     </section>
