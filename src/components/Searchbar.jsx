@@ -31,7 +31,7 @@ const Searchbar = () => {
             if (cateRef.current.contains(e.target)) {         /* For category btn */
                 setCategoryShow(!categoryShow)
             }else{
-                setCategoryShow(categoryShow)
+                setCategoryShow(false)                       /* use false rather than categoryShow */
             }   
             if (userRef.current.contains(e.target)) {         /* For User btn */
                 setUseShow (!useShow)
@@ -41,7 +41,7 @@ const Searchbar = () => {
             if (cartRef.current.contains(e.target)) {         /* For Cart btn */
                 setCartShow (!cartShow)
             } else  {
-                setCartShow (setCartShow)
+                setCartShow (false)
             }
             if (cartCrossRef.current.contains(e.target)) {     /* For cross btn */
                 setCartShow (!cartShow)

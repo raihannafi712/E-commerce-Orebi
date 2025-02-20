@@ -7,7 +7,7 @@ const Contacts = () => {
   return (
     <section>
         <Container>
-            <div className="pt-[124px]">
+            <div className="pt-[20px]">
                 <h3 className="font-dm text-[39px] font-bold ">Contacts</h3>
                 <div className="flex text-[12px] font-normal font-dm text-[#767676] items-center mt-2 ">
                     <Link to="/" className="hover:text-black hover:underline">Home</Link>

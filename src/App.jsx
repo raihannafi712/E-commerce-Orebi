@@ -14,17 +14,19 @@ import AccountPage from "./pages/AccountPage"
 
 let routerVar = createBrowserRouter(createRoutesFromElements(
 
-  <Route element={<Layout/>} >
-    <Route index element={<Home/>} ></Route>
-    <Route path="/shop" element={<ShopPage/>} ></Route>
-    <Route path="/shop/:id" element={<DetailsPage/>} ></Route>
-    <Route path="/about" element={<AboutPage/>} ></Route>
-    <Route path="/contacts" element={<Contacts/>} ></Route>
-    <Route path="/login" element={<Contacts/>} ></Route>
-    <Route path="/cart" element={<CartPage/>} ></Route>
-    <Route path="*" element={<ErrorPage/>} ></Route>
-    <Route path="/accounts" element={<AccountPage/>} ></Route>
-  </Route>
+  <>
+    <Route element={<Layout/>} >
+      <Route index element={<Home/>} ></Route>
+      <Route path="/shop" element={<ShopPage/>} ></Route>
+      <Route path="/shop/:id" element={<DetailsPage/>} ></Route>
+      <Route path="/about" element={<AboutPage/>} ></Route>
+      <Route path="/contacts" element={<Contacts/>} ></Route>
+      <Route path="/login" element={<Contacts/>} ></Route>
+      <Route path="/cart" element={<CartPage/>} ></Route>
+      <Route path="/accounts" element={<AccountPage/>} ></Route>
+    </Route>
+      <Route path="*" element={<ErrorPage/>} ></Route>
+  </>
 ))
 
 /*router end */

@@ -8,7 +8,7 @@ const AboutPage = () => {
   return (
     <section>
         <Container>
-            <div className="pt-[124px]">
+            <div className="pt-[20px]">
                 <h3 className="font-dm text-[39px] font-bold ">About</h3>
                 <div className="flex text-[12px] font-normal font-dm text-[#767676] items-center mt-2 ">
                 <Link to="/" className="hover:text-black hover:underline">Home</Link>
@@ -16,7 +16,7 @@ const AboutPage = () => {
                 <Link to="/about" className="hover:text-black hover:underline">About</Link>
                 </div>
             </div>
-            <div className="w-full py-[128px] ">
+            <div className="w-full py-[80px] ">
                 <a href=""><img src={about} alt="about" /></a>
             </div>
             <div>

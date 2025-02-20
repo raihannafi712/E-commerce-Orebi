@@ -81,7 +81,7 @@ const Shop = () => {
 
     <section>
         <Container>
-            <div className="pt-[124px]">
+            <div className="pt-[20px]">
               <h3 className="font-dm text-[39px] font-bold ">Products</h3>
               <div className="flex text-[12px] font-normal font-dm text-[#767676] items-center mt-2 ">
                 <Link to="/" className="hover:text-black hover:underline">Home</Link>
@@ -89,7 +89,7 @@ const Shop = () => {
                 <Link to="/shop" className="hover:text-black hover:underline">Products</Link>
               </div>
             </div>
-            <div className="py-[130px] flex ">
+            <div className="py-[70px] flex ">
               <div className="w-[15%] ">
                  <div>
                     <h3 className="font-dm text-[20px] font-bold">Shop by Category</h3>
