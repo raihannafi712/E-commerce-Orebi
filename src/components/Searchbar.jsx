@@ -134,8 +134,12 @@ const Searchbar = () => {
                                     </h3>
                                 </li>
                                 <li className="flex justify-center gap-3 pt-4 ">
-                                    <a href="#" className="font-dm text-[10px] lg:text-[16px]  text-[#767676] font-bold lg:px-9 px-[12px] lg:py-4 py-[10px] border-[#2B2B2B] border-[1px] duration-300 ease-in-out hover:bg-black hover:text-white ">View Cart</a>
-                                    <a href="#" className="font-dm text-[10px] lg:text-[16px] text-black font-bold lg:px-9 px-[12px] lg:py-4 py-[10px] border-[#2B2B2B] border-[1px] duration-300 ease-in-out hover:bg-black hover:text-white ">Checkout</a>
+                                    <Link to="/cart">
+                                        <a href="" className="font-dm text-[10px] lg:text-[16px]  text-[#767676] font-bold lg:px-9 px-[12px] lg:py-4 py-[10px] border-[#2B2B2B] border-[1px] duration-300 ease-in-out hover:bg-black hover:text-white ">View Cart</a>                               
+                                    </Link>
+                                    <Link to="/checkout">
+                                        <a href="" className="font-dm text-[10px] lg:text-[16px] text-black font-bold lg:px-9 px-[12px] lg:py-4 py-[10px] border-[#2B2B2B] border-[1px] duration-300 ease-in-out hover:bg-black hover:text-white ">Checkout</a>                                  
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

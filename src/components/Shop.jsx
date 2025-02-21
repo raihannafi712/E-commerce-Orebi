@@ -12,71 +12,31 @@ import { ApiData } from "./ContextApi";
 
 const Shop = () => {
 
-  // test start
+  let info = useContext(ApiData)
+  let [currentPage , setCurrentPage] = useState(1)
+  let [perPage , setPerPage] = useState(6)
 
-  let info = useContext(ApiData);
-  let [currentPage, setCurrentPage] = useState(1);
-  let [perPage, setPerPage] = useState(6);
-  let [category, setCategory] = useState([]);
-  let [categoryFilter, setCategoryFilter] = useState([]);
-  let [brand, setBrand] = useState([]);
+  let lastPage = currentPage * perPage;            /* In this case, 1*6 = 6 */
+  let firstPage = lastPage - perPage;              /* In this case, 6-6 = 0 */
+  let allPage = info.slice(firstPage , lastPage);  /* In this case, Total 30 objects and it will slice from 0 to 6.So there will be 5 items and its length will be 6 */
 
-  let lastPage = currentPage * perPage;
-  let firstPage = lastPage - perPage;
-  let allPage = info.slice(firstPage, lastPage);
+  // console.log(allPage);    /* To see how many items will be in a page */
 
-  let pageNumber = [];
+  let pageNumber = []
 
-  for (
-    let i = 0;
-    i <
-    Math.ceil(
-      categoryFilter.length > 0 ? categoryFilter : info.length / perPage
-    );
-    i++
-  ) {
+  for(let i = 0; i < Math.ceil(info.length / perPage) ; i++ ){
     pageNumber.push(i);
   }
 
   let paginate = (state) => {
     setCurrentPage(state + 1);
-  };
-
-  let next = () => {
-    if (currentPage < pageNumber.length) {
-      setCurrentPage((state) => state + 1);
-    }
-  };
-
-  let previous = () => {
-    if (currentPage > 1) {
-      setCurrentPage((state) => state - 1);
-    }
-  };
-
-  useEffect(() => {
-    setCategory([...new Set(info.map((item) => item.category))]);
-    setBrand([...new Set(info.map((item) => item.brand))]);
-  }, [info]);
-
-  let handleCategory = (citem) => {
-    let cateFilter = info.filter((item) => item.category == citem);
-    setCategoryFilter(cateFilter);
-  };
-
-
-  let handleBrand = (bitem) =>{
-    let brandFilter = info.filter((item) => item.brand == bitem); 
-    setCategoryFilter(brandFilter);
   }
 
-  console.log(categoryFilter);
-
-  // test end
-
+  
+  
   
 
-
+  
   return (
 
     <section>
@@ -182,17 +142,13 @@ const Shop = () => {
                       </div>
                     </div>
                   </div>
-                  <Post/>                  
+                  <div>
+                    <Post allPage={allPage}/>                  
+                    <div className="text-center pb-20 ">
+                      <Pagination pageNumber = {pageNumber} paginate={paginate} />
+                    </div>
+                  </div>
               </div>
-            </div>
-            <div className="text-center pb-20 ">
-              <Pagination
-                pageNumber={pageNumber}
-                paginate={paginate}
-                next={next}
-                currentPage={currentPage}
-                previous={previous}
-              />
             </div>
         </Container>
     </section>

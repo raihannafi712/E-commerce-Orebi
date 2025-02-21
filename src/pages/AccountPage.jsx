@@ -7,7 +7,7 @@ const AccountPage = () => {
   return (
     <section>
         <Container>
-            <div className="pt-[124px]">
+            <div className="pt-[20px]">
               <h3 className="font-dm text-[39px] font-bold ">My Account</h3>
               <div className="flex text-[12px] font-normal font-dm text-[#767676] items-center mt-2 ">
                 <Link to="/" className="hover:text-black hover:underline">Home</Link>
@@ -15,7 +15,7 @@ const AccountPage = () => {
                 <Link to="/shop" className="hover:text-black hover:underline">My account</Link>
               </div>
             </div>
-            <div className="flex py-[127px] ">
+            <div className="flex py-[80px] ">
                 <div className="w-[20%] " >
                     <ul>
                         <li className="my-10 cursor-pointer font-dm text-[18px] font-normal text-[#767676] hover:font-bold hover:text-black  ">
@@ -25,7 +25,7 @@ const AccountPage = () => {
                             <h3>Others</h3>
                         </li>
                         <li className="my-10 cursor-pointer font-dm text-[18px] font-normal text-[#767676] hover:font-bold hover:text-black  ">
-                            <h3>Donwloads</h3>
+                            <h3>Downloads</h3>
                         </li>
                         <li className="my-10 cursor-pointer font-dm text-[18px] font-normal text-[#767676] hover:font-bold hover:text-black  ">
                             <h3>Addresses</h3>

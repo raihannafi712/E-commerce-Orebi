@@ -8,18 +8,21 @@ import { ApiData } from "../ContextApi";
 
 
 
-const Post = ({ allPage, categoryFilter }) => {
+const Post = ({allPage}) => {
 
   let data = useContext(ApiData);
   // console.log(data);
+
+  // console.log(allPage);
+  
 
   
 
   return (
 
     <div className="pt-[60px] flex flex-wrap justify-between">
-      {data.map((item)=>(
-      <div className="!w-[24%] pb-[50px] ">                                           {/* whole box */}
+      {allPage.map((item)=>(
+      <div className="!w-[24%] pb-[50px] mx-[20px] ">                                           {/* whole box */}
         <div className="relative mb-6 group overflow-hidden cursor-pointer ">
           <Link to={`${item.id}`} ><img src={item.thumbnail} alt="product" /></Link>                        {/* each item has different id, so it needs to be set dynamically */}
           <div className="w-full h-[0px] opacity-0 bg-white absolute bottom-0 left-0 group-hover:h-[156px] duration-300 ease-in-out group-hover:opacity-100 ">
@@ -45,7 +48,6 @@ const Post = ({ allPage, categoryFilter }) => {
           <h4 className="font-dm text-[16px] font-normal text-start ">Black</h4>
         </div>
       </div>
-
       )) }
     </div>
   )

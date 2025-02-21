@@ -11,6 +11,7 @@ import Contacts from "./pages/Contacts"
 import CartPage from "./pages/CartPage"
 import ErrorPage from "./pages/ErrorPage"
 import AccountPage from "./pages/AccountPage"
+import Checkout from "./pages/Checkout"
 
 let routerVar = createBrowserRouter(createRoutesFromElements(
 
@@ -24,6 +25,7 @@ let routerVar = createBrowserRouter(createRoutesFromElements(
       <Route path="/login" element={<Contacts/>} ></Route>
       <Route path="/cart" element={<CartPage/>} ></Route>
       <Route path="/accounts" element={<AccountPage/>} ></Route>
+      <Route path="/checkout" element={<Checkout/>} ></Route>
     </Route>
       <Route path="*" element={<ErrorPage/>} ></Route>
   </>
