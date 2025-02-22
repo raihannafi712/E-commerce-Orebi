@@ -19,7 +19,6 @@ const Shop = () => {
   let lastPage = currentPage * perPage;            /* In this case, 1*6 = 6 */
   let firstPage = lastPage - perPage;              /* In this case, 6-6 = 0 */
   let allPage = info.slice(firstPage , lastPage);  /* In this case, Total 30 objects and it will slice from 0 to 6.So there will be 5 items and its length will be 6 */
-
   // console.log(allPage);    /* To see how many items will be in a page */
 
   let pageNumber = []
@@ -32,10 +31,52 @@ const Shop = () => {
     setCurrentPage(state + 1);
   }
 
-  
-  
+  let next = () => {
+    if (currentPage < pageNumber.length) {
+      setCurrentPage((state) => state + 1);           
+    }
+  }
+  let previous = () => {
+    if (currentPage > 1) {
+      setCurrentPage((state) => state - 1);          
+    }
+  }
+  // check page numbers start
+
+  // console.log(pageNumber.length);
+  // console.log(currentPage);
+
+  // check page numbers end
   
 
+  let [active , setActive] = useState("");     /* transfer active as props to post.jsx */
+  let handleActive = ()=> {
+    setActive("active");
+  }
+  // console.log(active);
+
+  let [category , setCategory] = useState([]);
+  let [brand , setBrand] = useState([]);
+
+  useEffect(() =>{
+    setCategory([...new Set(info.map((item)=> item.category))])
+    setBrand([...new Set(info.map((item)=> item.brand))])
+  },[info])
+
+
+
+  let [categoryFilter , setCategoryFilter] = useState([]);          /* To show items based on category */
+  let handleCategory = (citem) => {
+    let cateFilter = info.filter((item)=> item.category == citem);
+    setCategoryFilter(cateFilter);
+  }
+
+  
+
+
+  
+
+  
   
   return (
 
@@ -52,19 +93,35 @@ const Shop = () => {
             <div className="py-[70px] flex ">
               <div className="w-[15%] ">
                  <div>
-                    <h3 className="font-dm text-[20px] font-bold">Shop by Category</h3>
-                    <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
-                      <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">Category 1</a></li>
-                      <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">Category 2</a></li>
-                      <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">Category 3</a></li>
-                      <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">Category 4</a></li>
-                      <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">Category 5</a></li>
+                    <h3 className="font-dm text-[20px] font-bold">Shop by Category</h3>                    
+                    <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] my-[35px] ">
+                      {category.map((item) => (
+                        <li 
+                          onClick={() => handleCategory(item)} 
+                          className="my-[20px]  border-b-[1px] pb-2  ">
+                          <Link className="hover:font-bold hover:text-black capitalize " href="#">
+                            {item}
+                          </Link>
+                        </li>                 
+                      ))}
+                    </ul>
+                 </div>
+                 <div>
+                    <h3 className="font-dm text-[20px] font-bold my-[50px]">Shop by Brand</h3>
+                    <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] my-[35px] ">
+                    {brand.map((item) => (
+                      <li className="my-[20px]  border-b-[1px] pb-2 ">
+                        <a className="hover:font-bold hover:text-black " href="#">
+                          {item}
+                        </a>
+                      </li>                    
+                    ))}
                     </ul>
                  </div>
                  <div>
                     <h3 className="font-dm text-[20px] font-bold my-[50px] ">Shop by Color</h3>
-                    <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
-                      <li className="my-[25px]  border-b-[1px] pb-5 flex gap-3 items-center ">
+                    <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] my-[35px] ">
+                      <li className="my-[20px]  border-b-[1px] pb-1 flex gap-3 items-center ">
                         <div className="w-[11px] h-[11px] bg-[#000] rounded-[50%] "></div>
                         <a className="hover:font-bold hover:text-black " href="#">Color 1</a>
                       </li>
@@ -87,16 +144,6 @@ const Shop = () => {
                     </ul>
                  </div>
                  <div>
-                    <h3 className="font-dm text-[20px] font-bold my-[50px]">Shop by Brand</h3>
-                    <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
-                      <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">Brand 1</a></li>
-                      <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">Brand 2</a></li>
-                      <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">Brand 3</a></li>
-                      <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">Brand 4</a></li>
-                      <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">Brand 5</a></li>
-                    </ul>
-                 </div>
-                 <div>
                     <h3 className="font-dm text-[20px] font-bold my-[50px]">Shop by Price</h3>
                     <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
                       <li className="my-[25px]  border-b-[1px] pb-5 "><a className="hover:font-bold hover:text-black " href="#">$0.00 - $9.99</a></li>
@@ -110,10 +157,18 @@ const Shop = () => {
               <div className="w-[85%] text-center pl-10 ">
                   <div className="flex items-center">
                     <div className="w-[40%] flex gap-[20px] items-center ">
-                      <div className="p-[10px] bg-white hover:text-white hover:bg-black ease-in-out duration-300 cursor-pointer ">
+                      <div 
+                        onClick={() => setActive("")}        /* setActive null "" means active is off */
+                        className={`
+                        ${active == "active" ? "p-[10px] bg-white hover:text-white hover:bg-black ease-in-out duration-300 cursor-pointer" : "p-[10px]  text-white bg-black ease-in-out duration-300 cursor-pointer"}
+                        `}>    
+                        {/* ? means its active and " " is the css and same goes for : */}
                         <IoGrid />
                       </div>
-                      <div className="p-[10px] bg-white hover:text-white hover:bg-black ease-in-out duration-300 cursor-pointer ">
+                      <div onClick={handleActive}
+                        className={`
+                        ${active == "active" ? "p-[10px] bg-black text-white ease-in-out duration-300 cursor-pointer" : "p-[10px]  text-black bg-white ease-in-out duration-300 cursor-pointer"}
+                        `}>
                         <FaListUl />
                       </div>
                     </div>
@@ -143,9 +198,19 @@ const Shop = () => {
                     </div>
                   </div>
                   <div>
-                    <Post allPage={allPage}/>                  
+                    <Post 
+                      allPage={allPage} 
+                      active={active}
+                      categoryFilter={categoryFilter}
+                    />                  
                     <div className="text-center pb-20 ">
-                      <Pagination pageNumber = {pageNumber} paginate={paginate} />
+                      <Pagination                 /* using props to bring pagination's data here and vice versa */
+                        pageNumber = {pageNumber} 
+                        paginate={paginate} 
+                        next={next} 
+                        previous={previous} 
+                        currentPage={currentPage}                      
+                      />  
                     </div>
                   </div>
               </div>

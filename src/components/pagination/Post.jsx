@@ -8,19 +8,21 @@ import { ApiData } from "../ContextApi";
 
 
 
-const Post = ({allPage}) => {
+const Post = ({allPage , active , categoryFilter}) => {
 
   let data = useContext(ApiData);
   // console.log(data);
 
   // console.log(allPage);
-  
 
   
 
   return (
 
-    <div className="pt-[60px] flex flex-wrap justify-between">
+    <div className={`${
+        active == "active" ? "w-full" : "pt-[60px] flex flex-wrap justify-between"
+        } 
+      `}>
       {allPage.map((item)=>(
       <div className="!w-[24%] pb-[50px] mx-[20px] ">                                           {/* whole box */}
         <div className="relative mb-6 group overflow-hidden cursor-pointer ">
