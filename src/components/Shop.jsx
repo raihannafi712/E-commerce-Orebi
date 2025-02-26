@@ -7,6 +7,8 @@ import { FaListUl } from "react-icons/fa6";
 import Post from "./pagination/Post";
 import Pagination from "./pagination/Pagination";
 import { ApiData } from "./ContextApi";
+import { TiThSmallOutline } from "react-icons/ti";
+
 
 
 
@@ -16,6 +18,7 @@ const Shop = () => {
   let [currentPage , setCurrentPage] = useState(1)
   let [perPage , setPerPage] = useState(6)
 
+  let [categoryFilter , setCategoryFilter] = useState([]);          /* To show items based on category */
   let lastPage = currentPage * perPage;            /* In this case, 1*6 = 6 */
   let firstPage = lastPage - perPage;              /* In this case, 6-6 = 0 */
   let allPage = info.slice(firstPage , lastPage);  /* In this case, Total 30 objects and it will slice from 0 to 6.So there will be 5 items and its length will be 6 */
@@ -23,7 +26,10 @@ const Shop = () => {
 
   let pageNumber = []
 
-  for(let i = 0; i < Math.ceil(info.length / perPage) ; i++ ){
+  for(let i = 0; 
+    i <  Math.ceil( categoryFilter.length > 0 ? categoryFilter : info.length / perPage) ;
+     i++ 
+    ){
     pageNumber.push(i);
   }
 
@@ -65,15 +71,16 @@ const Shop = () => {
 
 
 
-  let [categoryFilter , setCategoryFilter] = useState([]);          /* To show items based on category */
+ 
   let handleCategory = (citem) => {
     let cateFilter = info.filter((item)=> item.category == citem);
     setCategoryFilter(cateFilter);
+  };
+
+  let handleBrand = (bitem) => {
+    let brandFilter = info.filter((item)=> item.brand == bitem);
+    setCategoryFilter(brandFilter);
   }
-
-  
-
-
   
 
   
@@ -93,8 +100,12 @@ const Shop = () => {
             <div className="py-[70px] flex ">
               <div className="w-[15%] ">
                  <div>
-                    <h3 className="font-dm text-[20px] font-bold">Shop by Category</h3>                    
-                    <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] my-[35px] ">
+                    <h3 className="font-dm text-[20px] font-bold mb-4">Shop by Category</h3>    
+                    <h2 onClick={()=> setCategoryFilter("")} className="flex justify-center gap-1 items-center font-dm font-normal text-[16px] text-[#6D6D6D] cursor-pointer  border-y-[2px] py-2 hover:font-bold hover:text-black capitalize  ">
+                      <TiThSmallOutline />
+                      Show All
+                    </h2>                
+                    <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] my-[25px] ">
                       {category.map((item) => (
                         <li 
                           onClick={() => handleCategory(item)} 
@@ -107,11 +118,13 @@ const Shop = () => {
                     </ul>
                  </div>
                  <div>
-                    <h3 className="font-dm text-[20px] font-bold my-[50px]">Shop by Brand</h3>
-                    <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] my-[35px] ">
+                    <h3 className="font-dm text-[20px] font-bold my-[40px]">Shop by Brand</h3>
+                    <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] my-[15px] h-[250px] overflow-y-scroll ">
                     {brand.map((item) => (
-                      <li className="my-[20px]  border-b-[1px] pb-2 ">
-                        <a className="hover:font-bold hover:text-black " href="#">
+                      <li 
+                      onClick={() => handleBrand(item)} 
+                      className="my-[20px]  border-b-[1px] pb-2 ">
+                        <a className="hover:font-bold hover:text-black cursor-pointer ">
                           {item}
                         </a>
                       </li>                    
