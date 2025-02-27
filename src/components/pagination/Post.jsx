@@ -63,11 +63,12 @@ const Post = ({allPage , active , categoryFilter}) => {
             }
           </div>
           <div className="">
-            {
-              categoryFilter.length > 5 ?
-                <h3>Show All</h3>
-              :
-                <h3>Show Less</h3>
+            { count && categoryFilter.length > 5
+            ?
+            <h3>Show All</h3>
+            :
+            categoryFilter.length > 5 &&
+            <h3>less</h3>
             }
           </div>  
         </>

@@ -201,11 +201,9 @@ const Shop = () => {
                       <div className="flex justify-end">
                         <h3 className="text-[16px] font-normal font-dm pr-3">Show:</h3>
                         <select name="cate" id="cate" className="w-[40%] border-black border-[1px] ">
-                          <option value="valOne" className="text-center ">10</option>
-                          <option value="valOne" className="text-center ">20</option>
-                          <option value="valOne" className="text-center ">30</option>
-                          <option value="valOne" className="text-center ">40</option>
-                          <option value="valOne" className="text-center ">50</option>
+                          <option value="6" className="text-center ">6</option>
+                          <option value="12" className="text-center ">12</option>
+                          <option value="18" className="text-center ">18</option>
                         </select>
                       </div>
                     </div>
