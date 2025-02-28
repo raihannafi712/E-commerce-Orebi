@@ -23,6 +23,20 @@ const Post = ({allPage , active , categoryFilter}) => {
     setShowFilter(filterAmi)
   },[categoryFilter] )
 
+  /* Category show all/less start */
+  let handleShow = () => {
+    setShowFilter(categoryFilter);
+    setCount(false);
+  }
+
+  let handleLess = () => {
+    let filterLess = categoryFilter.slice(0 , 5);
+    setShowFilter(filterLess);
+    setCount(true);
+  }
+
+    /* Category show all/less end */
+
   
 
   return (
@@ -63,12 +77,9 @@ const Post = ({allPage , active , categoryFilter}) => {
             }
           </div>
           <div className="">
-            { count && categoryFilter.length > 5
-            ?
-            <h3>Show All</h3>
-            :
-            categoryFilter.length > 5 &&
-            <h3>less</h3>
+            { count 
+            ? categoryFilter.length > 5 && <h3 onClick={handleShow} className="font-dm text-[16px] font-bold text-[#262626] cursor-pointer hover:underline ">Show All</h3>
+            : categoryFilter.length > 5 && <h3 onClick={handleLess} className="font-dm text-[16px] font-bold text-[#262626] cursor-pointer hover:underline">Show Less</h3>
             }
           </div>  
         </>
