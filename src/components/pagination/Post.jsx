@@ -42,9 +42,10 @@ const Post = ({allPage , active , categoryFilter}) => {
   return (
 
      <section>
-      {showFilter.length > 0 ? 
+      {showFilter.length > 0 
+      ? 
         <>
-          <div className="flex flex-wrap justify-between ">
+          <div className="pt-[60px] flex flex-wrap justify-between ">
             {
               showFilter.map((item) => (
                 <div className="!w-[24%] pb-[50px] mx-[20px]">                                           {/* whole box */}
@@ -53,9 +54,15 @@ const Post = ({allPage , active , categoryFilter}) => {
                     <div className="w-full h-[0px] opacity-0 bg-white absolute bottom-0 left-0 group-hover:h-[156px] duration-300 ease-in-out group-hover:opacity-100 ">
                       <ul>
                         <Link to={`${item.id}`} >
-                          <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Wish List <FaHeart /></li>
-                          <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Compare <GrPowerCycle /></li>
-                          <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Cart <FaShoppingCart /></li>             
+                          <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">
+                            Add to Wish List <FaHeart />
+                          </li>
+                          <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">
+                            Compare <GrPowerCycle />
+                          </li>
+                          <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">
+                            Add to Cart <FaShoppingCart />
+                          </li>             
                         </Link>
                       </ul>
                     </div>
@@ -86,7 +93,9 @@ const Post = ({allPage , active , categoryFilter}) => {
         
       : 
         <div className={`${
-            active == "active" ? "w-full" : "pt-[60px] flex flex-wrap justify-between"
+            active == "active" 
+            ? "w-full pt-[60px] "           
+            : "pt-[60px] flex flex-wrap justify-between"
             } 
           `}>
           {allPage.map((item)=>(

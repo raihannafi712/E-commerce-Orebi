@@ -173,14 +173,18 @@ const Shop = () => {
                       <div 
                         onClick={() => setActive("")}        /* setActive null "" means active is off */
                         className={`
-                        ${active == "active" ? "p-[10px] bg-white hover:text-white hover:bg-black ease-in-out duration-300 cursor-pointer" : "p-[10px]  text-white bg-black ease-in-out duration-300 cursor-pointer"}
+                        ${active == "active" 
+                          ? "p-[10px] bg-white hover:text-white hover:bg-black ease-in-out duration-300 cursor-pointer" 
+                          : "p-[10px]  text-white bg-black ease-in-out duration-300 cursor-pointer"}
                         `}>    
                         {/* ? means its active and " " is the css and same goes for : */}
                         <IoGrid />
                       </div>
                       <div onClick={handleActive}
                         className={`
-                        ${active == "active" ? "p-[10px] bg-black text-white ease-in-out duration-300 cursor-pointer" : "p-[10px]  text-black bg-white ease-in-out duration-300 cursor-pointer"}
+                        ${active == "active" 
+                          ? "p-[10px] bg-black  text-white ease-in-out duration-300 cursor-pointer" 
+                          : "p-[10px]  text-black hover:text-white hover:bg-black bg-white ease-in-out duration-300 cursor-pointer"}
                         `}>
                         <FaListUl />
                       </div>

@@ -16,11 +16,26 @@ const Footer = () => {
                     <div className="w-1/3 lg:w-[15%] ">
                         <h3 className="font-dm font-bold text-[18px] text-black ">MENU</h3>
                         <ul  className="font-dm font-normal text-[16px] text-[#6D6D6D] ">
-                            <li className="my-[10px] "><a href="/">Home</a></li>
-                            <li className="my-[10px] "><a href="/shop">Shop</a></li>
-                            <li className="my-[10px] "><a href="/about">About</a></li>
-                            <li className="my-[10px] "><a href="/contact">Contact</a></li>
-                            <li className="my-[10px] "><a href="/journal">Journal</a></li>
+                            <li className="my-[10px] ">
+                                <a href="/" className=" hover:underline hover:font-bold ">
+                                    Home
+                                </a>
+                            </li>
+                            <li className="my-[10px] ">
+                                <a href="/shop" className=" hover:underline hover:font-bold ">
+                                    Shop
+                                </a>
+                            </li>
+                            <li className="my-[10px] ">
+                                <a href="/about" className=" hover:underline hover:font-bold ">
+                                About
+                                </a>
+                            </li>
+                            <li className="my-[10px] ">
+                                <a href="/contacts" className=" hover:underline hover:font-bold ">
+                                Contact
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div className="w-1/3 lg:w-[15%] ">
@@ -57,9 +72,15 @@ const Footer = () => {
                 </div>
                 <div className="flex justify-between pb-16 items-center">
                     <div className="flex">
-                        <a className="mx-[13px] " href="#"><LiaFacebookF /></a>
-                        <a className="mx-[13px] " href="#"><FaLinkedinIn /></a>
-                        <a className="mx-[13px] " href="#"><FaInstagram /></a>
+                        <a className="mx-[13px] " href="https://www.facebook.com/">
+                            <LiaFacebookF />
+                        </a>
+                        <a className="mx-[13px] " href="https://www.linkedin.com/">
+                            <FaLinkedinIn />
+                        </a>
+                        <a className="mx-[13px] " href="https://www.instagram.com/">
+                            <FaInstagram />
+                        </a>
                     </div>
                     <div>
                         <h3>2020 Orebi Minimal eCommerce Figma Template by Adveits</h3>
