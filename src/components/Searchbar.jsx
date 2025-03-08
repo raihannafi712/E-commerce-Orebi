@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Container from "./Container";
 import Flex from "./Flex";
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
@@ -8,6 +8,8 @@ import { FaCartShopping } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
 import cart from '../assets/cartimg.png';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { ApiData } from "./ContextApi";
 
 
 
@@ -16,6 +18,10 @@ import { Link } from 'react-router-dom';
 
 const Searchbar = () => {
 
+    let info = useContext(ApiData)                                  /* Bringing API data from context API */
+    let data = useSelector((state) => state.product.cartItem);      /* Cart icon count */
+    let [search , setSearch] = useState('');                        /* searchBar item search */
+    let [searchFilter , setSearchFilter] = useState([]);
     /* Dropdown logic start */
 
     let [categoryShow , setCategoryShow] = useState(false);    /* Initiating variables in react to hide and show the category dropdown */
@@ -29,29 +35,41 @@ const Searchbar = () => {
     useEffect(()=>{
         document.addEventListener("click",(e)=>{
             if (cateRef.current.contains(e.target)) {         /* For category btn */
-                setCategoryShow(!categoryShow)
+                setCategoryShow(true)
             }else{
                 setCategoryShow(false)                       /* use false rather than categoryShow */
             }   
             if (userRef.current.contains(e.target)) {         /* For User btn */
-                setUseShow (!useShow)
+                setUseShow (true)
             } else {
                 setUseShow (false)
             }
             if (cartRef.current.contains(e.target)) {         /* For Cart btn */
-                setCartShow (!cartShow)
+                setCartShow (true)
             } else  {
                 setCartShow (false)
             }
-            if (cartCrossRef.current.contains(e.target)) {     /* For cross btn */
-                setCartShow (!cartShow)
-            } else  {
-                setCartShow (setCartShow)
-            }
+            // if (cartCrossRef.current.contains(e.target)) {     /* For cross btn */
+            //     setCartShow (false)
+            // }
         })
-    },[categoryShow , useShow , cartShow])                         /*useEffect occurs only once,so giving the variable inside makes it a loop  */
+    },[categoryShow , useShow , cartShow])        /*useEffect occurs only once,so giving the variable inside makes it a loop  */
       
     /* Dropdown logic end */
+
+    let handleSearch = (e) => {
+        setSearch(e.target.value)
+        // console.log(e.target.value);            /* to check searchbar inputs */
+        if (e.target.value == "") {
+            setSearchFilter([])
+        } else {
+            let searchOne = info.filter((item) => item.title.toLowerCase().includes(e.target.value.toLowerCase()) )
+            setSearchFilter(searchOne); 
+        }  
+    }
+    // console.log(searchFilter);                   /* Show search results */
+    
+
 
 
   return (
@@ -80,12 +98,29 @@ const Searchbar = () => {
                 </div>
                 <div className="w-[40%] ">
                     <div className="relative">
-                        <input 
+                        <input onChange={handleSearch}
                             type="text" placeholder="Search Products"
                             className="w-full h-[36px] lg:h-[50px] lg:pl-5 pl-[4px] text-[10px] lg:text-[20px] -outline-offset-1 "
                         />
                         <div className="absolute top-[50%] translate-y-[-50%] right-[2%]">
                             <FaSearch className="cursor-pointer text[8px] lg:text-[20px] "/>
+                        </div>
+                        <div className="">
+                            {searchFilter.length > 0 && 
+                                <div className="h-[300px] w-[100%] backdrop-blur-3xl bg-transparent absolute top-[52px] left-0 z-50 overflow-y-scroll ease-linear duration-500">
+                                    <ul>
+                                        {searchFilter.map((item) => (
+                                            <li className="py-3 border-y-[1px] border-gray-500 ">
+                                                <Link to={`/shop/${item.id}`}>
+                                                    <h3 className="font-dm text-[24px] lg:text-[16px] font-normal hover:font-bold ease-in-out duration-300">
+                                                        {item.title}
+                                                    </h3>                         
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -112,8 +147,15 @@ const Searchbar = () => {
                             </ul>
                         </div>                       
                         }
-                        <div className="cursor-pointer lg:pr-0 pr-5 " ref={cartRef}>
+                        <div className="cursor-pointer lg:pr-0 pr-5 relative mr-5 " ref={cartRef}>
                             <FaCartShopping />
+                            {data.length > 0 && (
+                                <div className="absolute left-[10px] top-[-15px] w-[20px] h-[20px]  rounded-full bg-black text-white ease-in-out duration-200 ">
+                                    <p className="text-center leading-[20px] items\ ">
+                                        {data.length}
+                                    </p>
+                                </div>
+                            )}
                         </div>
                         { cartShow &&
                         <div className="absolute top-[61px]  lg:left-[24%] lg:w-[75%] left-[-141%] w-[215%] z-10 ">
@@ -125,7 +167,7 @@ const Searchbar = () => {
                                         <span>$44.00</span>
                                     </div>
                                     <div className="lg:text-[18px] text-[12px] cursor-pointer duration-300 ease-in-out hover:text-red-400 " ref={cartCrossRef}>
-                                    <ImCross />
+                                        <ImCross />
                                     </div>
                                 </li>
                                 <li className="pl-[20px]">

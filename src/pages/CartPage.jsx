@@ -3,11 +3,31 @@ import Container from './../components/Container';
 import { Link } from 'react-router-dom';
 import { FaAngleRight , FaMinus , FaPlus   } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import cart from '../assets/cartbuy.png'
+
+import { useDispatch, useSelector } from "react-redux";
+import   {decrementProduct, incrementProduct, productRemove}   from "../components/slice/productSlice";
 
 
 
 const CartPage = () => {
+
+  let data = useSelector((state)=>state.product.cartItem);
+  console.log(data);
+  let dispatch = useDispatch();
+
+
+  let handleIncrement = (index) => {        /* Increasing product quantity  */
+    dispatch(incrementProduct(index));    
+  };
+
+  let handledecrement = (index) => {        /* decreasing product quantity  */
+    dispatch(decrementProduct(index));    
+  }
+   
+  let handleCross = (i) => {
+    dispatch(productRemove(i));
+  }
+
   return (
     <section>
       <Container>
@@ -33,35 +53,54 @@ const CartPage = () => {
             <div className="w-[25%] text-center ">
               <h3 className="text-[20px] font-bold font-dm text-black">Total</h3>
             </div>
-          </div>          
-          <div className="flex py-8 items-center ">
-            <div className="flex w-[25%] text-center items-center">
-              <div className="pl-5 cursor-pointer hover:text-red-500 ">
-                <ImCross />
-              </div>
-              <div className="pl-[20px] pr-[20px] ">
-                <img src={cart} alt="product" />
-              </div>
-              <h3 className=" text-[20px] font-bold font-dm text-black">
-                Product name
-              </h3>
-            </div>
-            <div className="w-[25%] text-center ">
-              <h3 className="text-[20px] font-bold font-dm text-black">$44.00</h3>
-            </div>
-            <div className="w-[25%] text-center ">
-              <div className="text-[16px] font-normal font-dm text-[#767676] ">
-                <ul className="flex justify-center py-[15px] mx-[80px] border-[#767676] border-[1px] items-center ">
-                  <li className="mx-[35px] cursor-pointer hover:text-black hover:font-bold "><FaMinus /></li>
-                  <li className="mx-[35px] text-[20px] ">1</li>
-                  <li className="mx-[35px] cursor-pointer hover:text-black hover:font-bold "><FaPlus /></li>
-                </ul>
-              </div>
-            </div>
-            <div className="w-[25%] text-center ">
-              <h3 className="text-[20px] font-bold font-dm text-black">$44.00</h3>
-            </div>
-          </div>         
+          </div>     
+          {data.length > 0 
+            ?
+            <>
+              {data.map((item , i)=>(
+                <div className="flex py-3 items-center ">
+                  <div className="flex w-[25%] text-center items-center">
+                    <div onClick={()=> handleCross(item)} className="pl-5 cursor-pointer hover:text-red-500 ">
+                      <ImCross />
+                    </div>
+                    <div className="pl-[20px] pr-[20px] ">
+                      <img src={item.thumbnail} alt="product" />
+                    </div>
+                    <h3 className=" text-[20px] font-bold font-dm text-black">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <div className="w-[25%] text-center ">
+                    <h3 className="text-[20px] font-bold font-dm text-black">${item.price}</h3>
+                  </div>
+                  <div className="w-[25%] text-center ">
+                    <div className="text-[16px] font-normal font-dm text-[#767676] ">
+                      <ul className="flex justify-center py-[15px] mx-[80px] border-[#767676] border-[1px] items-center ">
+                        <li onClick={()=>handledecrement(i)} className="mx-[35px] cursor-pointer hover:text-black hover:font-bold ">
+                          <FaMinus />
+                        </li>
+                        <li className="mx-[35px] text-[20px] ">
+                          {item.quantity}
+                        </li>
+                        <li onClick={()=>handleIncrement(i)} className="mx-[35px] cursor-pointer hover:text-black hover:font-bold ">
+                          <FaPlus />
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="w-[25%] text-center ">
+                    <h3 className="text-[20px] font-bold font-dm text-black">
+                      ${(item.price * item.quantity).toFixed(2)} 
+                    </h3>
+                  </div>
+                </div>         
+              ))}    
+            </>
+            :
+            <h3 className="items-center py-8 text-center text-[24px] font-bold font-dm text-black">
+              No Products
+            </h3>
+          }
           <div className="flex items-center justify-between text-[16px] font-bold font-dm text-black ">
             <div className="w-[30%] ">
               <select name="cate" id="cate" className="w-[40%] border-black border-[1px] ">

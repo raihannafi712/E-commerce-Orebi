@@ -7,17 +7,25 @@ import { RxStarFilled } from "react-icons/rx";
 import { IoStarHalfOutline , IoStarOutline  } from "react-icons/io5";
 import { FaPlus , FaMinus  } from "react-icons/fa";
 import { Bounce, ToastContainer, toast } from 'react-toastify';
+import { addToCart } from "../components/slice/productSlice";
+import { useDispatch } from "react-redux";
+
+
 
 
 
 
 const DetailsPage = () => {
 
-  // API Data
-  let productId = useParams();
+  let productId = useParams();         /* API DATA */
   // console.log(productId);
+  let navigate = useNavigate()         /* We're using usenavigate method instead of Link to use tostify */
+  let [ singleProduct , setsingleProduct ] = useState([]);
+  let [show , setShow] = useState(true);     /* Dropdown */
+  let [show1 , setShow1] = useState(true);   
+  let dispatch = useDispatch();
 
-  let [ singleProduct , setsingleProduct ] = useState([])
+
 
   let singleData = ()=>{
     axios.get(`https://dummyjson.com/products/${productId.id}`).then((response)=>{
@@ -29,11 +37,6 @@ const DetailsPage = () => {
   useEffect(()=>{
     singleData();
   },[])
-  // API data 
-
-  // dropdown start
-  let [show , setShow] = useState(true)
-  let [show1 , setShow1] = useState(true)
 
   let handleFaq = ()=>{
     setShow(!show)
@@ -41,7 +44,6 @@ const DetailsPage = () => {
   let handleFaq1 = ()=>{
       setShow1(!show1)
   }
-  // dropdown end
 
   // rating start
 
@@ -49,15 +51,15 @@ const DetailsPage = () => {
     let number = index + 0.5
     return singleProduct.rating > index + 1 ? <RxStarFilled/> : singleProduct.rating > number ? <IoStarHalfOutline /> : <IoStarOutline/>
   } )
-  console.log(clientRating);
+  // console.log(clientRating);
   
   // rating end
 
 
   // Tostify start
 
-  let navigate = useNavigate()         /* We're using usenavigate method instead of Link to use tostify */
-  let handleCart = ()=>{
+  let handleCart = (item)=>{
+    dispatch(addToCart({ ...item , quantity: 1}));        /* quantity has been added to item details */
     toast('Added to Cart!')
     setTimeout(() => {
       navigate('/cart')
@@ -65,6 +67,9 @@ const DetailsPage = () => {
   }
   // Tostify end
   
+
+
+
 
   return (
   
@@ -129,7 +134,9 @@ const DetailsPage = () => {
             <div  className="flex pt-[30px] items-center ">             
               <ul className="flex bg-[#FFFFFF]  ">
                 <li className="font-dm lg:text-[14px] text-[12px] font-bold text-center text-[#262626]  py-[8px] lg:py-[15px] px-[47px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] border-[1px] border-gray-300 mr-6 ">Add to Wish List</li>
-                <li onClick={handleCart} className="font-dm lg:text-[14px] text-[12px] font-bold text-center text-[#262626]  py-[8px] lg:py-[15px] px-[47px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] border-[1px] border-gray-300 ">Add to Cart</li>
+                <li onClick={()=> handleCart(singleProduct) } className="font-dm lg:text-[14px] text-[12px] font-bold text-center text-[#262626]  py-[8px] lg:py-[15px] px-[47px]  cursor-pointer duration-300 ease-in-out hover:text-[white] hover:font-bold  hover:bg-[#2B2B2B] border-[1px] border-gray-300 ">
+                  Add to Cart
+                </li>
                 <ToastContainer
                   position="top-right"
                   autoClose={2000}
@@ -148,7 +155,9 @@ const DetailsPage = () => {
           </div>
           <div className="pt-[30px] ">
             <div className="flex pb-[50px] ">
-              <h3 className="pr-[400px] cursor-pointer font-dm font-bold text-[20px] " onClick={handleFaq}>FEATURES  & DETAILS</h3>
+              <h3 className="pr-[400px] cursor-pointer font-dm font-bold text-[20px] " onClick={handleFaq}>
+                FEATURES  & DETAILS
+              </h3>
                {show == false ? <FaMinus /> : <FaPlus />}
             </div>
             <div className="ease-in-out duration-300">
