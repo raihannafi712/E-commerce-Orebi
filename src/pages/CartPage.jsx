@@ -3,7 +3,6 @@ import Container from './../components/Container';
 import { Link } from 'react-router-dom';
 import { FaAngleRight , FaMinus , FaPlus   } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-
 import { useDispatch, useSelector } from "react-redux";
 import   {decrementProduct, incrementProduct, productRemove}   from "../components/slice/productSlice";
 
@@ -14,7 +13,6 @@ const CartPage = () => {
   let data = useSelector((state)=>state.product.cartItem);
   console.log(data);
   let dispatch = useDispatch();
-
 
   let handleIncrement = (index) => {        /* Increasing product quantity  */
     dispatch(incrementProduct(index));    
@@ -27,6 +25,18 @@ const CartPage = () => {
   let handleCross = (i) => {
     dispatch(productRemove(i));
   }
+
+  // Total pricing
+  let {totalPrice , totalQuantity} = data.reduce((acc , item)=>{
+    acc.totalPrice += item.price * item.quantity
+    acc.totalQuantity += item.quantity
+
+    return acc
+  },{totalPrice: 0 , totalQuantity:0})
+
+  let ami = totalPrice * 15 / 100;
+
+
 
   return (
     <section>
@@ -102,13 +112,13 @@ const CartPage = () => {
             </h3>
           }
           <div className="flex items-center justify-between text-[16px] font-bold font-dm text-black ">
-            <div className="w-[30%] ">
+            {/* <div className="w-[30%] ">
               <select name="cate" id="cate" className="w-[40%] border-black border-[1px] ">
                 <option value="valOne" className="text-center ">Small</option>
                 <option value="valOne" className="text-center ">Medium</option>
                 <option value="valOne" className="text-center ">Large</option>
               </select>
-            </div>
+            </div> */}
             <div className="w-[30%] ">
               <a href="" >Apply coupon</a>
             </div>
@@ -120,13 +130,21 @@ const CartPage = () => {
             <h3>Cart totals</h3>
           </div>
           <div className="">
+          <div className="pb-[16px] items-center flex justify-end ">
+              <h3>Quantity</h3>
+              <p className="pl-[250px] ">{totalQuantity}</p>
+            </div>
             <div className="pb-[16px] items-center flex justify-end ">
               <h3>Subtotal</h3>
-              <p className="pl-[250px] ">389.99 $</p>
+              <p className="pl-[250px] ">{totalPrice.toFixed(2)} $</p>
+            </div>
+            <div className="pb-[16px] items-center flex justify-end ">
+              <h3>Vat</h3>
+              <p className="pl-[250px] ">{ami.toFixed(2)} $</p>  {/* 15% vat */}
             </div>
             <div className="items-center flex justify-end" >
               <h3>Total</h3>
-              <p className="pl-[275px]">389.99 $</p>
+              <p className="pl-[275px]">{(totalPrice + ami).toFixed(2) }$</p>
             </div>
           </div>
           <div className="py-[46px] text-end " >

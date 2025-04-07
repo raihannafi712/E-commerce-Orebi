@@ -7,7 +7,7 @@ import { FaUser , FaCaretDown } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
 import cart from '../assets/cartimg.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ApiData } from "./ContextApi";
 
@@ -22,8 +22,7 @@ const Searchbar = () => {
     let data = useSelector((state) => state.product.cartItem);      /* Cart icon count */
     let [search , setSearch] = useState('');                        /* searchBar item search */
     let [searchFilter , setSearchFilter] = useState([]);
-    /* Dropdown logic start */
-
+    // Dropdown logic 
     let [categoryShow , setCategoryShow] = useState(false);    /* Initiating variables in react to hide and show the category dropdown */
     let [useShow , setUseShow] = useState(false);              /* Initiating variables in react to hide and show the User dropdown */
     let [cartShow , setCartShow] = useState(false);              /* Initiating variables in react to hide and show the Cart dropdown */
@@ -31,7 +30,10 @@ const Searchbar = () => {
     let userRef = useRef();   /* User dropdown show btn ref */
     let cartRef = useRef();   /* Cart dropdown show btn ref */
     let cartCrossRef = useRef();
+    // Searchbar link part
+    let navigate = useNavigate();
 
+    /* Dropdown logic start */
     useEffect(()=>{
         document.addEventListener("click",(e)=>{
             if (cateRef.current.contains(e.target)) {         /* For category btn */
@@ -57,6 +59,7 @@ const Searchbar = () => {
       
     /* Dropdown logic end */
 
+    // Searchbar logic
     let handleSearch = (e) => {
         setSearch(e.target.value)
         // console.log(e.target.value);            /* to check searchbar inputs */
@@ -68,6 +71,13 @@ const Searchbar = () => {
         }  
     }
     // console.log(searchFilter);                   /* Show search results */
+
+    // searchbar itemwise link
+    let handleSingleItem = (id) =>{
+        navigate(`/shop/${id}`);
+        setSearchFilter([]);
+        setSearch('');
+    }
     
 
 
@@ -101,6 +111,7 @@ const Searchbar = () => {
                         <input onChange={handleSearch}
                             type="text" placeholder="Search Products"
                             className="w-full h-[36px] lg:h-[50px] lg:pl-5 pl-[4px] text-[10px] lg:text-[20px] -outline-offset-1 "
+                            value={search}
                         />
                         <div className="absolute top-[50%] translate-y-[-50%] right-[2%]">
                             <FaSearch className="cursor-pointer text[8px] lg:text-[20px] "/>
@@ -110,8 +121,8 @@ const Searchbar = () => {
                                 <div className="h-[300px] w-[100%] backdrop-blur-3xl bg-transparent absolute top-[52px] left-0 z-50 overflow-y-scroll ease-linear duration-500">
                                     <ul>
                                         {searchFilter.map((item) => (
-                                            <li className="py-3 border-y-[1px] border-gray-500 ">
-                                                <Link to={`/shop/${item.id}`}>
+                                            <li onClick={()=>handleSingleItem(item.id)} className="py-3 border-y-[1px] border-gray-500 ">
+                                                <Link to="">
                                                     <h3 className="font-dm text-[24px] lg:text-[16px] font-normal hover:font-bold ease-in-out duration-300">
                                                         {item.title}
                                                     </h3>                         
