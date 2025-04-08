@@ -34,7 +34,7 @@ const CartPage = () => {
     return acc
   },{totalPrice: 0 , totalQuantity:0})
 
-  let ami = totalPrice * 15 / 100;
+  let vat = totalPrice * 15 / 100;
 
 
 
@@ -129,22 +129,41 @@ const CartPage = () => {
           <div className="py-[40px] text-[16px] font-bold font-dm text-black text-end ">
             <h3>Cart totals</h3>
           </div>
-          <div className="">
-          <div className="pb-[16px] items-center flex justify-end ">
-              <h3>Quantity</h3>
-              <p className="pl-[250px] ">{totalQuantity}</p>
-            </div>
-            <div className="pb-[16px] items-center flex justify-end ">
-              <h3>Subtotal</h3>
-              <p className="pl-[250px] ">{totalPrice.toFixed(2)} $</p>
-            </div>
-            <div className="pb-[16px] items-center flex justify-end ">
-              <h3>Vat</h3>
-              <p className="pl-[250px] ">{ami.toFixed(2)} $</p>  {/* 15% vat */}
-            </div>
-            <div className="items-center flex justify-end" >
-              <h3>Total</h3>
-              <p className="pl-[275px]">{(totalPrice + ami).toFixed(2) }$</p>
+          <div className="flex justify-around">
+            <div className="w-[80%] "></div>
+            <div className="w-[20%] ">
+              <div className="pb-[16px] items-center flex justify-around">
+                <div className="w-[50%] ">
+                  <h3 className="font-bold font-dm text-black text-[20x] ">Quantity</h3>
+                </div>
+                <div className="w-[50%] flex justify-end ">
+                  <p className="">{totalQuantity}</p>
+                </div>
+              </div>
+              <div className="pb-[16px] items-center flex justify-around ">
+                <div className="w-[50%] ">
+                  <h3 className="font-bold font-dm text-black text-[20x] ">Subtotal</h3>
+                </div>
+                <div className="w-[50%] ">
+                  <p className="flex justify-end">{totalPrice.toFixed(2)} $</p>
+                </div>
+              </div>
+              <div className="pb-[16px] items-center flex justify-around ">
+                <div className="w-[50%] ">
+                  <h3 className="font-bold font-dm text-black text-[20x] ">Vat</h3>
+                </div>
+                <div className="w-[50%] ">
+                  <p className="flex justify-end"> {vat.toFixed(2)} $</p>
+                </div>
+              </div>
+              <div className="items-centercenter flex justify-around " >
+                <div className="w-[50%] ">
+                  <h3 className="font-bold font-dm text-black text-[20x] ">Total</h3>
+                </div>
+                <div className="w-[50%] ">
+                  <p className="flex justify-end">{(totalPrice + vat).toFixed(2) }$</p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="py-[46px] text-end " >
