@@ -30,7 +30,7 @@ let routerVar = createBrowserRouter(createRoutesFromElements(
       <Route path="/signup" element={<SignUpPage/>} ></Route>
       <Route path="/login" element={<LoginPage/>} ></Route>
     </Route>
-      <Route path="*" element={<ErrorPage/>} ></Route>             {/* Error page */}
+    <Route path="*" element={<ErrorPage/>} ></Route>             {/* Error page */}
   </>
 ))
 
