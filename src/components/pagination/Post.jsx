@@ -35,15 +35,13 @@ const Post = ({allPage , active , categoryFilter}) => {
     setCount(true);
   }
 
-    /* Category show all/less end */
+  /* Category show all/less end */
 
-  
 
   return (
-
-     <section>
+    <section>
       {showFilter.length > 0 
-      ? 
+        ? 
         <>
           <div className="pt-[60px] flex flex-wrap justify-between ">
             {
@@ -90,45 +88,80 @@ const Post = ({allPage , active , categoryFilter}) => {
             }
           </div>  
         </>
-        
-      : 
+        : 
         <div className={`${
-            active == "active" 
-            ? "w-full pt-[60px] "           
-            : "pt-[60px] flex flex-wrap justify-between"
-            } 
-          `}>
+          active == "active" 
+          ? "w-full pt-[60px] "           
+          : "pt-[60px] flex flex-wrap justify-between"
+          }`} >
           {allPage.map((item)=>(
-          <div className="!w-[24%] pb-[50px] mx-[20px] ">                                           {/* whole box */}
-            <div className="relative mb-6 group overflow-hidden cursor-pointer ">
-              <Link to={`${item.id}`} ><img src={item.thumbnail} alt="product" /></Link>                        {/* each item has different id, so it needs to be set dynamically */}
-              <div className="w-full h-[0px] opacity-0 bg-white absolute bottom-0 left-0 group-hover:h-[156px] duration-300 ease-in-out group-hover:opacity-100 ">
-                <ul>
-                  <Link to={`${item.id}`} >
-                    <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Wish List <FaHeart /></li>
-                    <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Compare <GrPowerCycle /></li>
-                    <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Cart <FaShoppingCart /></li>             
+            active === "active"  
+            ?
+            (
+              <div className="!w-[100%] pb-[50px] mx-[20px] ">                                           {/* whole box */}
+                <div className="flex justify-center relative mb-6 group overflow-hidden cursor-pointer ">
+                  <Link to={`${item.id}`} ><img src={item.thumbnail} alt="product" /></Link>                        {/* each item has different id, so it needs to be set dynamically */}
+                  <div className="w-full h-[0px] opacity-0 bg-white absolute bottom-0 left-0 group-hover:h-[156px] duration-300 ease-in-out group-hover:opacity-100 ">
+                    <ul>
+                      <Link to={`${item.id}`} >
+                        <li className="flex justify-center py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Wish List <FaHeart /></li>
+                        <li className="flex justify-center py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Compare <GrPowerCycle /></li>
+                        <li className="flex justify-center py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Cart <FaShoppingCart /></li>             
+                      </Link>
+                    </ul>
+                  </div>
+                  <div>
+                    <Link to={`${item.id}`}>
+                      <h3 className="font-dm font-bold text-[16px] text-[white] bg-[#262626] px-[25px] py-[6px] inline-block absolute top-[0%] left-[0%] mt-4 ml-4 ">{item.discountPercentage} % </h3>           
+                    </Link>
+                  </div>
+                </div>
+                <div className="flex items-center justify-center gap-x-[10px] ">
+                  <a className="font-dm text-[16px] font-bold hover:underline " href="/shop">
+                    {item.title}-
+                  </a>
+                  <h4 className="font-dm text-[16px] font-normal ">
+                    ${item.price} 
+                  </h4>
+                </div>
+                <div>
+                  <h4 className="font-dm text-[16px] font-normal text-center ">Black</h4>
+                </div>
+              </div>
+            )
+            :
+            (
+            <div className="!w-[24%] pb-[50px] mx-[20px] ">                                           {/* whole box */}
+              <div className="relative mb-6 group overflow-hidden cursor-pointer ">
+                <Link to={`${item.id}`} ><img src={item.thumbnail} alt="product" /></Link>                        {/* each item has different id, so it needs to be set dynamically */}
+                <div className="w-full h-[0px] opacity-0 bg-white absolute bottom-0 left-0 group-hover:h-[156px] duration-300 ease-in-out group-hover:opacity-100 ">
+                  <ul>
+                    <Link to={`${item.id}`} >
+                      <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Wish List <FaHeart /></li>
+                      <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Compare <GrPowerCycle /></li>
+                      <li className="flex justify-end py-4 gap-x-4 items-center font-dm text-[16px] font-bold text-[#262626] hover:text-[red] ">Add to Cart <FaShoppingCart /></li>             
+                    </Link>
+                  </ul>
+                </div>
+                <div>
+                  <Link to={`${item.id}`}>
+                    <h3 className="font-dm font-bold text-[16px] text-[white] bg-[#262626] px-[25px] py-[6px] inline-block absolute top-[0%] left-[0%] mt-4 ml-4 ">{item.discountPercentage} % </h3>           
                   </Link>
-                </ul>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <a className="font-dm text-[16px] font-bold hover:underline " href="/shop">{item.title} </a>
+                <h4 className="font-dm text-[16px] font-normal ">${item.price} </h4>
               </div>
               <div>
-                <Link to={`${item.id}`}>
-                  <h3 className="font-dm font-bold text-[16px] text-[white] bg-[#262626] px-[25px] py-[6px] inline-block absolute top-[0%] left-[0%] mt-4 ml-4 ">{item.discountPercentage} % </h3>           
-                </Link>
+                <h4 className="font-dm text-[16px] font-normal text-start ">Black</h4>
               </div>
             </div>
-            <div className="flex items-center justify-between">
-              <a className="font-dm text-[16px] font-bold hover:underline " href="/shop">{item.title} </a>
-              <h4 className="font-dm text-[16px] font-normal ">${item.price} </h4>
-            </div>
-            <div>
-              <h4 className="font-dm text-[16px] font-normal text-start ">Black</h4>
-            </div>
-          </div>
+            )
           )) }
         </div>        
       }
-     </section>
+    </section>
   )
 };
 
