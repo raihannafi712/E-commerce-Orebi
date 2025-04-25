@@ -3,7 +3,7 @@ import Container from "./Container";
 import logo from '../assets/logo.png';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { Link , NavLink } from "react-router-dom";
 import Home from "../pages/Home";
 
 const Header = () => {
@@ -27,37 +27,45 @@ const Header = () => {
                             <a 
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
-                              <Link to="/"
-                              
-                              >Home</Link>
+                                <NavLink to="/" className={({isActive}) => isActive ? "font-bold text-black " : "" } >
+                                    Home
+                                </NavLink>
                             </a>
                         </li>
                         <li className='mx-6 py-1'>
                         <a 
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
-                                <Link to="/shop">Shop</Link>
+                                <NavLink to="/shop" className={({isActive}) => isActive ? "font-bold text-black " : "" } >
+                                    Shop
+                                </NavLink>
                             </a>
                         </li>
                         <li className='mx-6 py-1 relative group'>
                             <a 
                                 className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                                 href="#">
-                                <Link to="/about">About</Link>
+                                <NavLink to="/about" className={({isActive}) => isActive ? "font-bold text-black " : "" } >
+                                    About
+                                </NavLink>
                             </a>
                         </li>
                         <li className='mx-6 py-1'>
                         <a 
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
-                                <Link to="/contacts">Contacts</Link>
+                                <NavLink to="/contacts" className={({isActive}) => isActive ? "font-bold text-black " : "" } >
+                                    Contacts
+                                </NavLink>
                             </a>
                         </li>
                         <li className='mx-6 py-1'>
                         <a 
                             className="text-[#767676] font-dm font-bold text-[16px] relative after:absolute after:right-0 after:bottom-[-5px] after:content-[''] after:w-0 after:duration-500 after:ease-in-out after:h-[3px] after:bg-white  hover:text-black duration-300 ease-in-out hover:font-bold  "
                             href="#">
-                                <Link to="/signup">Sign Up</Link>
+                                <NavLink to="/signup" className={({isActive}) => isActive ? "font-bold text-black " : "" } >
+                                    SignUp
+                                </NavLink>
                             </a>
                         </li>
                     </ul>
