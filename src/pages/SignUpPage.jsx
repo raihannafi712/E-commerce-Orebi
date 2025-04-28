@@ -14,11 +14,11 @@ const SignUpPage = () => {
 
 
     let handleEmail = (e) => {
-    setEmail(e.target.value);
+        setEmail(e.target.value);
     }
 
     let handlePassword = (e) =>{
-    setPassword(e.target.value);
+        setPassword(e.target.value);
     }
 
     let handleSubmit = () => {

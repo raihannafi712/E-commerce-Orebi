@@ -9,7 +9,7 @@ import firebaseConfig from './firebase.config.js';
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <ContextApi>
+    <ContextApi>            {/* For context API purpose */}
       <App />
     </ContextApi>
   </Provider>
